@@ -18,6 +18,37 @@ assets/img/                responsive webp + jpg at 480/768/1280, plus og.jpg
 functions/api/enquiry.ts   form endpoint: Turnstile verify + Resend send
 ```
 
+
+## Getting this into GitHub
+
+This folder is already a git repository with one commit. To publish it:
+
+```bash
+# 1. Create an empty repo on GitHub (no README, no .gitignore, no licence)
+#    https://github.com/new  ->  name it clinical-bench
+
+# 2. From inside this folder:
+git remote add origin https://github.com/YOUR-USERNAME/clinical-bench.git
+git push -u origin main
+```
+
+If you prefer the GitHub CLI, `gh repo create clinical-bench --private --source=. --push`
+does the same in one line.
+
+### Then connect Cloudflare Pages
+
+1. Cloudflare dashboard > Workers and Pages > Create > Pages > Connect to Git
+2. Pick the repo. Build command: **none**. Build output directory: **/**
+3. Add the environment variables listed above, then add the custom domain.
+
+Every push to `main` deploys automatically. Pull requests get preview URLs.
+
+### Keep secrets out of git
+
+`.gitignore` already excludes `.env`, `.dev.vars` and `node_modules`. API keys belong
+in the Cloudflare Pages dashboard as encrypted environment variables, never in a file
+in this repo.
+
 ## Deploy
 
 1. Push this directory to a Git repository.
