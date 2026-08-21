@@ -23,17 +23,20 @@ functions/api/enquiry.ts   form endpoint: Turnstile verify + Resend send
 
 This folder is already a git repository with one commit. To publish it:
 
-```bash
-# 1. Create an empty repo on GitHub (no README, no .gitignore, no licence)
-#    https://github.com/new  ->  name it clinical-bench
+Repository: <https://github.com/GalaticBounce/the-clinical-bench>
 
-# 2. From inside this folder:
-git remote add origin https://github.com/YOUR-USERNAME/clinical-bench.git
+The remote is already configured. From inside this folder:
+
+```bash
 git push -u origin main
 ```
 
-If you prefer the GitHub CLI, `gh repo create clinical-bench --private --source=. --push`
-does the same in one line.
+If the GitHub repo was created with a README or licence, the histories will differ.
+Either start it empty, or force the first push (safe here, the remote has nothing worth keeping):
+
+```bash
+git push -u origin main --force
+```
 
 ### Then connect Cloudflare Pages
 
