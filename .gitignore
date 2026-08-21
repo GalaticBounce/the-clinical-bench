@@ -1,0 +1,19 @@
+# dependencies
+node_modules/
+
+# local env — never commit secrets
+.env
+.env.*
+.dev.vars
+
+# build & tooling
+.wrangler/
+dist/
+.cache/
+
+# os / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hire Doctors, Nurses &amp; Allied Health | Clinical Bench</title>
+<meta name="description" content="On-demand access to Australian doctors, nurses and allied health for product testing, advisory boards and medical AI evaluation. Matched in days.">
+<link rel="canonical" href="https://theclinicalbench.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#F7F6F2">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="Clinical Bench">
+<meta property="og:title" content="Clinical Bench · credentialled clinicians, on demand">
+<meta property="og:description" content="On-demand access to doctors, nurses and allied health for teams building in healthcare.">
+<meta property="og:url" content="https://theclinicalbench.com/">
+<meta property="og:image" content="https://theclinicalbench.com/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Clinical Bench","url":"https://theclinicalbench.com/","logo":"https://theclinicalbench.com/assets/img/og.jpg","areaServed":"AU","description":"On-demand access to doctors, nurses and allied health for teams building in healthcare."}</script>
+<link rel="preload" href="/assets/fonts/onest-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/onest-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:"Onest";font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/onest-latin-400-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}@font-face{font-family:"Onest";font-style:normal;font-weight:500;font-display:swap;src:url("/assets/fonts/onest-latin-500-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}@font-face{font-family:"Onest";font-style:normal;font-weight:600;font-display:swap;src:url("/assets/fonts/onest-latin-600-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}@font-face{font-family:"Onest";font-style:normal;font-weight:700;font-display:swap;src:url("/assets/fonts/onest-latin-700-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}</style>
+<style>
+  :root{
+    --bg:#F7F6F2; --card:#FFFFFF; --ink:#111315; --muted:#6A6E74; --line:#E7E4DB;
+    --accent:#1E7A5A; --accent-2:#67e0a6; --accent-soft:#E4F0EA; --dark:#0E1518;
+    --f:"Onest",system-ui,-apple-system,sans-serif;
+    --r-pill:999px; --r-xl:34px; --r-lg:24px; --r-md:16px;
+    --mx:clamp(20px,5vw,72px); --maxw:1240px; --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--f);background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:var(--accent);color:#fff}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+  .cta :focus-visible{outline-color:var(--accent-2)}
+  section[id],main[id]{scroll-margin-top:92px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--mx)}
+  h1,h2,h3{font-weight:600;line-height:1.0;letter-spacing:-.03em}
+  .label{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .accent{color:var(--accent)}
+
+  /* caret — blinks at the end of each heading */
+  .caret{display:inline-block;width:.07em;height:.78em;margin-left:.06em;vertical-align:-.04em;border-radius:3px;
+    background:linear-gradient(180deg,var(--accent),var(--accent-2));box-shadow:0 0 12px rgba(30,122,90,.55);opacity:0}
+  .type .ch{will-change:opacity}
+  .hh .caret{opacity:1;height:.82em;animation:cblink 1.05s step-end infinite}
+  @keyframes cblink{0%,50%{opacity:1}50.01%,100%{opacity:0}}
+  .hh .tw-r{color:var(--accent)}
+
+  /* pills */
+  .pill{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;padding:14px 24px;border-radius:var(--r-pill);cursor:pointer;border:1px solid transparent;transition:transform .3s var(--ease),background .25s,color .25s,border-color .25s;white-space:nowrap}
+  .pill.dark{background:var(--ink);color:#fff} .pill.dark:hover{transform:translateY(-2px);background:#000}
+  .pill.ghost{background:transparent;color:var(--ink);border-color:var(--line)} .pill.ghost:hover{transform:translateY(-2px);border-color:var(--ink);background:#fff}
+  .pill.light{background:#fff;color:var(--ink)} .pill.light:hover{transform:translateY(-2px)}
+  .pill .arw{transition:transform .3s var(--ease)} .pill:hover .arw{transform:translateX(3px)}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(247,246,242,.72);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+  header.stuck{border-color:var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px;letter-spacing:-.02em}
+  .brand .mk{width:22px;height:22px;flex:0 0 auto}
+  .nav-c{display:flex;gap:34px;font-size:15px;font-weight:500;color:var(--muted)}
+  .nav-c a{display:inline-flex;align-items:center;min-height:34px} .nav-c a:hover{color:var(--ink)}
+  .nav-r{display:flex;align-items:center;gap:14px}
+  @media(max-width:860px){.nav-c{display:none}}
+
+  /* HERO */
+  .hero{text-align:center;padding:clamp(70px,11vw,140px) 0 clamp(50px,7vw,90px);position:relative;overflow:hidden}
+  #hpart{position:absolute;inset:0;z-index:0;width:100%;height:100%}
+  .hero::before{content:"";position:absolute;left:50%;top:-8%;width:min(880px,90vw);height:540px;transform:translateX(-50%);z-index:0;
+    background:radial-gradient(60% 60% at 50% 42%,rgba(30,122,90,.10),transparent 70%);pointer-events:none}
+  .hero .wrap{position:relative;z-index:2}
+  .lockup{display:inline-flex;align-items:center;gap:9px;padding:8px 16px 8px 10px;border:1px solid var(--line);background:#fff;border-radius:var(--r-pill);font-size:13.5px;font-weight:600;color:var(--muted)}
+  .lockup .mk{width:18px;height:18px}
+  h1.hh{font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.035em;margin:28px auto 0;max-width:none;line-height:1.06}
+  .hh .tw-b{display:block}
+  .hh .tw-line{display:block;min-height:1.1em}
+  .hh .sub-accent{color:var(--accent)}
+  .hero p.sub{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:52ch;margin:26px auto 0}
+  .hero-cta{display:flex;gap:12px;justify-content:center;margin-top:38px;flex-wrap:wrap}
+
+  /* EXPLAINER (what we do) */
+  .explainer{padding:clamp(34px,5vw,66px) 0 clamp(8px,2vw,18px)}
+  .explainer .ex{font-size:clamp(30px,4.6vw,56px);font-weight:600;letter-spacing:-.035em;max-width:19ch;margin-top:16px;line-height:1.05}
+  .explainer .ex .accent{color:var(--accent)}
+  .explainer .ex-sub{font-size:clamp(17px,1.9vw,20px);color:var(--muted);max-width:56ch;margin-top:22px;line-height:1.5}
+
+  /* PROCESS PANEL */
+  .panel-wrap{padding:0 var(--mx) clamp(30px,4vw,50px)}
+  .panel{max-width:var(--maxw);margin:0 auto;position:relative;border-radius:var(--r-xl);overflow:hidden;background:var(--dark);color:#fff;padding:clamp(52px,5.5vw,72px) clamp(30px,4vw,60px) clamp(40px,5vw,60px)}
+  .panel::before{content:"";position:absolute;inset:0;z-index:0;
+    background:radial-gradient(90% 90% at 50% 25%,rgba(30,122,90,.16),transparent 70%)}
+  /* dot grid, faded at the edges */
+  .panel-grid{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1px);
+    background-size:26px 26px;
+    -webkit-mask-image:radial-gradient(75% 65% at 50% 45%,#000 30%,transparent 78%);
+    mask-image:radial-gradient(75% 65% at 50% 45%,#000 30%,transparent 78%)}
+  /* slow drifting aurora blobs */
+  .aurora{position:absolute;inset:-20%;z-index:0;pointer-events:none;filter:blur(46px);opacity:.55}
+  .aurora i{position:absolute;display:block;border-radius:50%;mix-blend-mode:screen}
+  .aurora .a1{width:46%;height:60%;left:6%;top:6%;background:radial-gradient(circle,rgba(30,122,90,.55),transparent 65%);animation:drift1 22s ease-in-out infinite}
+  .aurora .a2{width:40%;height:55%;right:8%;top:14%;background:radial-gradient(circle,rgba(46,157,116,.4),transparent 65%);animation:drift2 27s ease-in-out infinite}
+  .aurora .a3{width:52%;height:50%;left:28%;bottom:2%;background:radial-gradient(circle,rgba(103,224,166,.22),transparent 65%);animation:drift3 31s ease-in-out infinite}
+  @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(9%,7%) scale(1.14)}}
+  @keyframes drift2{0%,100%{transform:translate(0,0) scale(1.06)}50%{transform:translate(-8%,10%) scale(.94)}}
+  @keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(6%,-8%) scale(1.1)}}
+  #ppart{position:absolute;inset:0;z-index:1;width:100%;height:100%;pointer-events:none}
+  .panel>.panel-copy,.panel>.proc{position:relative;z-index:2}
+  /* pulse rings radiating from each node as it activates */
+  .proc .halo{fill:none;stroke:var(--accent-2);opacity:0}
+  .proc .n1 .halo{animation:halo 5s infinite 0s}
+  .proc .n2 .halo{animation:halo 5s infinite 1.55s}
+  .proc .n3 .halo{animation:halo 5s infinite 3.15s}
+  .proc .n4 .halo{animation:halo 5s infinite 4.7s}
+  @keyframes halo{0%{r:36px;opacity:.5;stroke-width:2}70%,100%{r:62px;opacity:0;stroke-width:.5}}
+  @media(prefers-reduced-motion:reduce){.aurora *,.proc .halo,.proc .arc,.proc .orbit,.proc .ic>*{animation:none!important}.proc .ic>*{stroke-dashoffset:0!important;opacity:1!important}.proc .orbit{opacity:.25}.aurora{opacity:.35}}
+  .panel .panel-label{position:absolute;top:clamp(22px,3vw,30px);left:clamp(30px,4vw,60px);z-index:3;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+  .panel .accent{color:var(--accent-2)}
+  .proc{position:relative;z-index:2;width:100%;max-width:1000px;display:block;margin:clamp(16px,2.5vw,26px) auto 0}
+  .panel-copy{position:relative;z-index:2;max-width:900px;margin-top:clamp(40px,5vw,60px)}
+  .wwd-label{display:block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px}
+  .ptitle{font-size:clamp(26px,3.6vw,44px);font-weight:600;letter-spacing:-.025em;line-height:1.08;max-width:22ch;color:#fff}
+  .psub{font-size:clamp(15px,1.6vw,17px);color:rgba(255,255,255,.66);margin-top:16px;max-width:52ch;line-height:1.5}
+  .panel .badge{position:absolute;top:clamp(20px,2.5vw,30px);right:clamp(20px,2.5vw,30px);z-index:3;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:12.5px;font-weight:600;padding:9px 14px;border-radius:var(--r-pill)}
+  .panel .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 0 4px rgba(103,224,166,.25)}
+  .proc{position:relative;z-index:2;width:100%;max-width:1000px;display:block}
+  .proc .track{stroke:rgba(255,255,255,.16);stroke-width:2;stroke-dasharray:2 8;stroke-linecap:round}
+  .proc .pulse{fill:var(--accent-2);filter:drop-shadow(0 0 8px rgba(103,224,166,.9))}
+  .proc .ring{fill:#0E1518;stroke:rgba(103,224,166,.22);stroke-width:2}
+  /* sweeping progress arc: traces the ring once as the step activates */
+  .proc .arc{fill:none;stroke:var(--accent-2);stroke-width:2.5;stroke-linecap:round;
+    stroke-dasharray:226.2;stroke-dashoffset:226.2;transform:rotate(-90deg);opacity:0}
+  .proc .n1 .arc{animation:arc 5s linear infinite 0s}
+  .proc .n2 .arc{animation:arc 5s linear infinite 1.55s}
+  .proc .n3 .arc{animation:arc 5s linear infinite 3.15s}
+  .proc .n4 .arc{animation:arc 5s linear infinite 4.7s}
+  @keyframes arc{
+    0%{stroke-dashoffset:226.2;opacity:0}
+    3%{opacity:.95}
+    26%{stroke-dashoffset:0;opacity:.95}
+    52%{stroke-dashoffset:0;opacity:.25}
+    100%{stroke-dashoffset:0;opacity:0}}
+  /* slow dashed orbit, brightening while the step is live */
+  .proc .orbit{fill:none;stroke:var(--accent-2);stroke-width:1.2;stroke-dasharray:2 9;opacity:0;
+    animation:spin 22s linear infinite}
+  .proc .n1 .orbit{animation:spin 22s linear infinite,orbitIn 5s ease-in-out infinite 0s}
+  .proc .n2 .orbit{animation:spin 22s linear infinite,orbitIn 5s ease-in-out infinite 1.55s}
+  .proc .n3 .orbit{animation:spin 22s linear infinite,orbitIn 5s ease-in-out infinite 3.15s}
+  .proc .n4 .orbit{animation:spin 22s linear infinite,orbitIn 5s ease-in-out infinite 4.7s}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes orbitIn{0%,4%{opacity:0}14%{opacity:.55}45%{opacity:.28}100%{opacity:0}}
+  .proc .n1 .ring{animation:pop 5s infinite 0s}.proc .n2 .ring{animation:pop 5s infinite 1.55s}
+  .proc .n3 .ring{animation:pop 5s infinite 3.15s}.proc .n4 .ring{animation:pop 5s infinite 4.7s}
+  @keyframes pop{0%,10%{stroke:rgba(103,224,166,.28)}15%,24%{stroke:var(--accent-2);filter:drop-shadow(0 0 6px rgba(103,224,166,.6))}30%,100%{stroke:rgba(103,224,166,.28);filter:none}}
+  .proc .ic{stroke:var(--accent-2);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .proc .ic>*{stroke-dasharray:120;stroke-dashoffset:120;opacity:0}
+  .proc .n1 .ic>*{animation:draw 5s ease-out infinite 0s}
+  .proc .n2 .ic>*{animation:draw 5s ease-out infinite 1.55s}
+  .proc .n3 .ic>*{animation:draw 5s ease-out infinite 3.15s}
+  .proc .n4 .ic>*{animation:draw 5s ease-out infinite 4.7s}
+  /* secondary strokes follow the primary one */
+  .proc .n1 .ic .d2{animation-delay:.20s}.proc .n1 .ic .d3{animation-delay:.34s}
+  .proc .n2 .ic .d2{animation-delay:1.82s}
+  .proc .n2 .ic .cut{animation-delay:1.80s}
+  .proc .n4 .ic .d2{animation-delay:4.90s}.proc .n4 .ic .d3{animation-delay:5.08s}
+  @keyframes draw{
+    0%{stroke-dashoffset:120;opacity:0}
+    4%{opacity:1}
+    22%{stroke-dashoffset:0;opacity:1}
+    88%{stroke-dashoffset:0;opacity:1}
+    97%,100%{stroke-dashoffset:0;opacity:0}}
+  /* the check underlay must not draw, only appear with its stroke */
+  .proc .ic .cut{stroke-dasharray:none;stroke-dashoffset:0;stroke-linecap:round;stroke-linejoin:round}
+  .proc .lab{fill:rgba(255,255,255,.82);font-family:var(--f);font-weight:600;font-size:15px;text-anchor:middle}
+  .proc .cap{fill:rgba(255,255,255,.42);font-family:var(--f);font-weight:500;font-size:11px;text-anchor:middle;letter-spacing:.02em}
+  @media(max-width:640px){.proc .lab{font-size:13px}.proc .cap{display:none}}
+
+  /* DNA HELIX (JS-driven twist; icons anchored to strands) */
+  .helix{position:relative;height:240px;width:100%;margin-bottom:8px;overflow:hidden}
+  .helix svg.strands{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .helix .strand{fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .helix .rung{stroke:var(--accent);stroke-width:2;stroke-linecap:round}
+  .hx{position:absolute;left:0;top:0;width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;color:var(--ink);box-shadow:0 8px 22px -14px rgba(17,19,21,.28);
+    will-change:transform,opacity,filter;transition:box-shadow .45s var(--ease),border-color .45s var(--ease),color .45s var(--ease),background .45s var(--ease)}
+  .hx.acc{color:var(--accent);background:var(--accent-soft);border-color:transparent}
+  .hx svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  /* the travelling light picks each discipline out as it passes */
+  .hx.lit{color:var(--accent);border-color:rgba(30,122,90,.45);background:#fff;
+    box-shadow:0 0 0 5px rgba(30,122,90,.07),0 10px 26px -12px rgba(30,122,90,.5)}
+  /* discipline name, on hover */
+  .hx-l{position:absolute;top:calc(100% + 9px);left:50%;transform:translateX(-50%) translateY(-4px);
+    white-space:nowrap;font-size:11.5px;font-weight:600;letter-spacing:.01em;color:var(--ink);
+    background:#fff;border:1px solid var(--line);border-radius:var(--r-pill);padding:5px 11px;
+    opacity:0;pointer-events:none;transition:opacity .25s var(--ease),transform .25s var(--ease);
+    box-shadow:0 10px 24px -14px rgba(17,19,21,.4)}
+  .hx:hover{z-index:99!important}
+  .hx:hover .hx-l{opacity:1;transform:translateX(-50%) translateY(0)}
+  @media(hover:none){.hx-l{display:none}}
+  @media(max-width:640px){.helix{height:170px}.hx{width:36px;height:36px}.hx svg{width:16px;height:16px}}
+
+  /* SECTION heads */
+  .sec{padding:clamp(48px,7vw,90px) 0}
+  .sec-head{max-width:var(--maxw);margin:0 auto;padding:0 var(--mx)}
+  .sec-head h2{font-size:clamp(32px,4.6vw,58px);font-weight:600;letter-spacing:-.035em;max-width:16ch;margin-top:18px}
+  .sec-head h2 .accent{color:var(--accent)}
+
+  /* SERVICE cards */
+  .cards{max-width:var(--maxw);margin:44px auto 0;padding:0 var(--mx);display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .svc{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(26px,2.8vw,34px);overflow:hidden;min-height:330px;display:flex;flex-direction:column;transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s}
+  .svc:hover{transform:translateY(-6px);box-shadow:0 26px 54px -26px rgba(17,19,21,.28);border-color:rgba(30,122,90,.35)}
+  .svc-wm{position:absolute;right:-18px;bottom:-26px;width:154px;height:154px;color:var(--accent);opacity:.07;pointer-events:none;transition:opacity .4s,transform .55s var(--ease)}
+  .svc:hover .svc-wm{opacity:.13;transform:scale(1.07) rotate(-5deg)}
+  .svc-ic{width:46px;height:46px;border-radius:13px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent);flex:0 0 auto;position:relative;z-index:1}
+  .svc-ic svg{width:23px;height:23px}
+  .svc-title{font-size:clamp(20px,2.1vw,24px);font-weight:600;letter-spacing:-.02em;margin-top:26px;position:relative;z-index:1}
+  .svc-desc{font-size:14.5px;color:var(--muted);line-height:1.55;margin-top:11px;position:relative;z-index:1;max-width:32ch}
+  .svc-foot{margin-top:auto;padding-top:24px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+  .svc-tag{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+  .svc-arw{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--accent);transition:transform .35s var(--ease),background .3s,color .3s,border-color .3s}
+  .svc:hover .svc-arw{transform:translateX(4px);background:var(--accent);color:#fff;border-color:var(--accent)}
+  .svc.feature{background:var(--dark);border-color:var(--dark);color:#fff}
+  .svc.feature::before{content:"";position:absolute;inset:0;background:radial-gradient(55% 45% at 72% 12%,rgba(103,224,166,.2),transparent 70%);animation:glowP 4.5s ease-in-out infinite;pointer-events:none}
+  @keyframes glowP{0%,100%{opacity:.5}50%{opacity:1}}
+  .svc.feature .svc-ic{background:rgba(103,224,166,.14);color:var(--accent-2)}
+  .svc.feature .svc-desc{color:rgba(255,255,255,.64)}
+  .svc.feature .svc-tag{color:var(--accent-2)}
+  .svc.feature .svc-wm{color:var(--accent-2);opacity:.11}
+  .svc.feature .svc-arw{border-color:rgba(255,255,255,.2);color:var(--accent-2)}
+  .svc.feature:hover .svc-arw{background:var(--accent-2);color:var(--dark);border-color:var(--accent-2)}
+  @media(max-width:860px){.cards{grid-template-columns:1fr}}
+
+  /* EDGE */
+  .edge{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .edge-in{max-width:var(--maxw);margin:0 auto;padding:clamp(60px,8vw,100px) var(--mx);display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+  .edge h2{font-size:clamp(30px,4vw,50px);font-weight:600;letter-spacing:-.035em;max-width:16ch}
+  .edge h2 .accent{color:var(--accent)}
+  .edge p{color:var(--muted);font-size:17px;margin-top:20px;max-width:44ch}
+  .proof{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .proof li{font-size:13.5px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:9px 15px;border-radius:var(--r-pill)}
+  .stat{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);padding:34px}
+  .stat .fig{font-size:clamp(56px,8vw,88px);font-weight:700;letter-spacing:-.04em;line-height:.9}
+  .stat .fig .accent{color:var(--accent)}
+  .stat .lab{color:var(--muted);font-size:15px;margin-top:16px;line-height:1.5}
+  .stat .src{display:block;font-size:12px;color:#5F646A;margin-top:12px}
+  @media(max-width:860px){.edge-in{grid-template-columns:1fr;gap:34px}}
+
+  /* PEOPLE imagery */
+  .ppl{max-width:var(--maxw);margin:44px auto 0;padding:0 var(--mx);display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .pp{position:relative;border-radius:var(--r-lg);overflow:hidden;margin:0;aspect-ratio:4/3;background:var(--dark)}
+  .pp img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+  .pp:hover img{transform:scale(1.04)}
+  .pp figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 28px;color:#fff;background:linear-gradient(180deg,transparent,rgba(14,21,24,.78))}
+  .pp .k{display:block;font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--accent-2);margin-bottom:8px}
+  .pp .t{display:block;font-size:16px;font-weight:500;max-width:32ch;line-height:1.35}
+  @media(max-width:760px){.ppl{grid-template-columns:1fr}}
+
+  /* COMMUNITY */
+  .csub{color:var(--muted);font-size:17px;max-width:62ch;margin-top:18px;line-height:1.55}
+  .comm-wrap{max-width:var(--maxw);margin:40px auto 0;padding:0 var(--mx)}
+  .comm{margin:0;border-radius:var(--r-xl);overflow:hidden;background:#fff;border:1px solid var(--line)}
+  .comm img{width:100%;height:auto;display:block}
+
+  /* FAQ */
+  .faq-wrap{max-width:var(--maxw);margin:40px auto 0;padding:0 var(--mx)}
+  .faq{border-top:1px solid var(--line)}
+  .faq details{border-bottom:1px solid var(--line)}
+  .faq summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;position:relative;
+    font-size:clamp(17px,2vw,20px);font-weight:600;letter-spacing:-.01em}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"";position:absolute;right:6px;top:50%;width:11px;height:11px;
+    border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);
+    transform:translateY(-70%) rotate(45deg);transition:transform .3s var(--ease)}
+  .faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+  .faq summary:hover{color:var(--accent)}
+  .faq p{color:var(--muted);font-size:16px;padding:0 40px 24px 0;max-width:70ch;margin:0}
+  /* CTA */
+  .cta-sec{padding:clamp(48px,7vw,90px) var(--mx) clamp(60px,8vw,100px)}
+  .cta{max-width:var(--maxw);margin:0 auto;background:var(--dark);color:#fff;border-radius:var(--r-xl);padding:clamp(44px,6vw,80px);text-align:center;position:relative;overflow:hidden}
+  .cta::before{content:"";position:absolute;left:50%;top:-40%;width:700px;height:500px;transform:translateX(-50%);background:radial-gradient(50% 50% at 50% 50%,rgba(103,224,166,.16),transparent 70%);pointer-events:none}
+  .cta .in{position:relative;z-index:1}
+  .cta h2{font-size:clamp(34px,5vw,68px);font-weight:700;letter-spacing:-.04em;max-width:14ch;margin:0 auto;color:#fff}
+  .cta h2 .accent{color:var(--accent-2)}
+  .cta p{color:rgba(255,255,255,.66);font-size:18px;margin:22px auto 0;max-width:44ch}
+  .form{display:flex;gap:10px;justify-content:center;margin:34px auto 0;max-width:560px;flex-wrap:wrap}
+  .form input{flex:1;min-width:220px;font-family:var(--f);font-size:15px;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:var(--r-pill);padding:15px 22px}
+  .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+  .form input::placeholder{color:rgba(255,255,255,.5)}
+  .form input:focus{outline:none;border-color:var(--accent-2);background:rgba(255,255,255,.12)}
+  .cta .fine{font-size:12.5px;color:rgba(255,255,255,.4);margin-top:18px}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .form .cf-turnstile{flex-basis:100%;display:flex;justify-content:center}
+  .form-msg.err{color:#ffb4a8}
+  .form-msg.ok{color:var(--accent-2)}
+  .cta .alt{margin-top:26px;font-size:14px;color:rgba(255,255,255,.6)} .cta .alt a{color:var(--accent-2);font-weight:600}
+
+  /* FOOTER */
+  footer{padding:clamp(50px,6vw,80px) 0 40px}
+  .foot{max-width:var(--maxw);margin:0 auto;padding:0 var(--mx);display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+  .foot .b{font-weight:700;font-size:22px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+  .foot .b .mk{width:22px;height:22px}
+  .foot .tg{color:var(--muted);font-size:15px;margin-top:14px;max-width:34ch}
+  .foot h4{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+  .foot a{display:block;color:var(--ink);font-size:15px;padding:9px 0;min-height:34px;opacity:.8} .foot a:hover{opacity:1;color:var(--accent)}
+  .foot-b{max-width:var(--maxw);margin:44px auto 0;padding:22px var(--mx) 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:13px}
+  .foot-b .cmp{max-width:56ch}
+  @media(max-width:760px){.foot{grid-template-columns:1fr 1fr}.foot .b{grid-column:1/-1}}
+
+  /* motion states */
+  html.anim .up{opacity:0;transform:translateY(26px)}
+  html.anim .type{opacity:0}
+  html.anim .type .ch{opacity:0}
+  html.anim .panel{opacity:0;transform:scale(.9)}
+  @media(prefers-reduced-motion:reduce){html.anim .up,html.anim .type,html.anim .type .ch,html.anim .panel{opacity:1!important;transform:none!important} .proc *{animation:none!important}}
+</style>
+<script>
+  (function(){var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+   if(!rm)document.documentElement.classList.add('anim');
+   window.__reveal=function(){document.documentElement.classList.remove('anim');};
+   window.__fs=setTimeout(function(){if(!window.__animOK)window.__reveal();},1700);})();
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Clinical Bench?","acceptedAnswer":{"@type":"Answer","text":"Clinical Bench is an Australian marketplace that gives companies on-demand access to credentialled doctors, nurses and allied health professionals for commercial work: product testing, advisory boards, process and regulatory input, and medical AI evaluation."}},{"@type":"Question","name":"Who is on the bench?","acceptedAnswer":{"@type":"Answer","text":"Registered doctors, nurses and allied health professionals based in Australia. They are screened for commercial experience, including product, private-sector and regulatory work, not just their clinical specialty."}},{"@type":"Question","name":"What can I commission?","acceptedAnswer":{"@type":"Answer","text":"Common engagements are product testing and validation, sitting on an advisory board, mapping or explaining a care workflow, reviewing health claims, quality and ergonomics input, medical writing, due diligence, and clinician-in-the-loop evaluation of medical AI models."}},{"@type":"Question","name":"Is this clinical research or a CRO?","acceptedAnswer":{"@type":"Answer","text":"No. Clinical Bench does not run clinical trials and is not a contract research organisation. We supply healthcare professionals for commercial work that needs their judgement and experience, outside direct patient care."}},{"@type":"Question","name":"How quickly can you match someone?","acceptedAnswer":{"@type":"Answer","text":"Most engagements are matched within days rather than months. You send a short brief, we come back with who fits and how we would run it."}},{"@type":"Question","name":"How much does it cost?","acceptedAnswer":{"@type":"Answer","text":"Engagements are quoted at a fixed price once the brief is scoped, so there are no open-ended hourly bills. Send an enquiry with what you need and we will come back with a price."}},{"@type":"Question","name":"Do clinicians endorse our product publicly?","acceptedAnswer":{"@type":"Answer","text":"No. Clinical Bench supplies private professional input for your team. It is never a public endorsement, testimonial or advertisement for a product."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Clinical Bench","url":"https://theclinicalbench.com/","areaServed":{"@type":"Country","name":"Australia"},"serviceType":["Clinical product testing and validation","Clinical advisory boards","Medical AI evaluation","Regulatory and quality input","Medical writing","Clinical due diligence"],"description":"On-demand access to credentialled Australian doctors, nurses and allied health professionals for commercial work outside direct patient care.","knowsAbout":["medical device validation","clinician-in-the-loop AI evaluation","care workflow design","health regulatory review","aged care","medical writing"]}</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><svg class="mk" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="#1E7A5A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 4.4H6.6a2 2 0 0 0-2 2v11.2a2 2 0 0 0 2 2h1.6"/><path d="M15.8 4.4h1.6a2 2 0 0 1 2 2v11.2a2 2 0 0 1-2 2h-1.6"/></g><circle cx="12" cy="9.9" r="3" fill="#2E9D74"/><path d="M7.3 18.2a4.7 4.7 0 0 1 9.4 0Z" fill="#2E9D74"/></svg> Clinical Bench</a>
+    <nav class="nav-c">
+      <a href="#commission">What you can commission</a>
+      <a href="#edge">Why us</a>
+      <a href="#faq">FAQ</a>
+      <a href="/clinicians/">For clinicians</a>
+    </nav>
+    <div class="nav-r"><a class="pill dark mag" href="#contact">Enquire <span class="arw">→</span></a></div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <canvas id="hpart" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <span class="lockup up"><svg class="mk" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="#1E7A5A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 4.4H6.6a2 2 0 0 0-2 2v11.2a2 2 0 0 0 2 2h1.6"/><path d="M15.8 4.4h1.6a2 2 0 0 1 2 2v11.2a2 2 0 0 1-2 2h-1.6"/></g><circle cx="12" cy="9.9" r="3" fill="#2E9D74"/><path d="M7.3 18.2a4.7 4.7 0 0 1 9.4 0Z" fill="#2E9D74"/></svg> For teams building in healthcare</span>
+      <h1 class="hh">Credentialled clinicians, on demand for <span class="accent">product validation</span>.</h1>
+      <p class="sub up">Bring a doctor, nurse or allied-health expert onto your product, your process or your advisory board. Matched in days, delivered, not just discussed. Australian and verified.</p>
+      <div class="hero-cta up">
+        <a class="pill dark mag" href="#contact">Scope an engagement <span class="arw">→</span></a>
+        <a class="pill ghost mag" href="/clinicians/">I’m a clinician</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO + HOW IT WORKS PANEL -->
+  <div class="panel-wrap">
+    <div class="panel">
+      <div class="aurora" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
+      <div class="panel-grid" aria-hidden="true"></div>
+      <canvas id="ppart" aria-hidden="true"></canvas>
+      <span class="panel-label">How it works</span>
+      <div class="badge"><span class="dot"></span> Verified · Australian</div>
+      <svg class="proc" viewBox="0 0 900 260" preserveAspectRatio="xMidYMid meet" aria-label="Scope, match, run, deliver">
+        <line class="track" x1="110" y1="120" x2="790" y2="120"/>
+        <circle class="pulse" r="6"><animateMotion dur="5s" repeatCount="indefinite" path="M110 120 H790"/></circle>
+        <g class="node n1" transform="translate(110,120)"><circle class="orbit" r="47"/><circle class="ring" r="36"/><circle class="arc" r="36"/><circle class="halo" r="36"/><g class="ic" transform="translate(-12,-12)"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7a2.5 2.5 0 0 1-2.5 2.5H11l-4.2 3.4A.5.5 0 0 1 6 19v-3H6.5A2.5 2.5 0 0 1 4 13.5z"/><path class="d2" d="M8 9h8"/><path class="d3" d="M8 12.2h5"/></g><text class="lab" y="70">Scope</text><text class="cap" y="90">Tell us the problem</text></g>
+        <g class="node n2" transform="translate(337,120)"><circle class="orbit" r="47"/><circle class="ring" r="36"/><circle class="arc" r="36"/><circle class="halo" r="36"/><g class="ic" transform="translate(-12,-12)"><circle cx="11" cy="7.6" r="3.1"/><path d="M4.8 19.4a6.2 6.2 0 0 1 12.4 0"/><path class="cut" d="m14.6 16.6 2 2 3.6-3.8" stroke="#0E1518" stroke-width="4.6"/><path class="d2" d="m14.6 16.6 2 2 3.6-3.8"/></g><text class="lab" y="70">Match</text><text class="cap" y="90">The right professional</text></g>
+        <g class="node n3" transform="translate(563,120)"><circle class="orbit" r="47"/><circle class="ring" r="36"/><circle class="arc" r="36"/><circle class="halo" r="36"/><g class="ic" transform="translate(-12,-12)"><path d="M3 12h3.6l2-5.6 3.2 11 2.2-6.2 1.6 3.4H21"/></g><text class="lab" y="70">Run</text><text class="cap" y="90">To an agreed brief</text></g>
+        <g class="node n4" transform="translate(790,120)"><circle class="orbit" r="47"/><circle class="ring" r="36"/><circle class="arc" r="36"/><circle class="halo" r="36"/><g class="ic" transform="translate(-12,-12)"><path d="M6 3.5h8.2L19 8.3v12.2a1.3 1.3 0 0 1-1.3 1.3H6a1.3 1.3 0 0 1-1.3-1.3V4.8A1.3 1.3 0 0 1 6 3.5Z"/><path class="d2" d="M14 3.6V8.6h5"/><path class="d3" d="m8.2 14.6 2.6 2.6 5-5.2"/></g><text class="lab" y="70">Deliver</text><text class="cap" y="90">Findings you can act on</text></g>
+      </svg>
+      <div class="panel-copy">
+        <span class="wwd-label">What we do</span>
+        <h2 class="ptitle type">On-demand access to doctors, nurses and <span class="accent">allied health.</span></h2>
+        <p class="psub up">Real healthcare expertise for the commercial side of what you’re building. In days, not months.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMISSION (helix + icon cards) -->
+  <section class="sec" id="commission">
+    <div class="helix" aria-hidden="true"></div>
+    <div class="sec-head">
+      <span class="label up">What you can commission</span>
+      <h2 class="type">From a two-hour call to ongoing <span class="accent">AI evaluation.</span></h2>
+    </div>
+    <div class="cards">
+      <div class="svc up">
+        <svg class="svc-wm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="m8.5 12 2 2 4-4"/></svg>
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="m8.5 12 2 2 4-4"/></svg></div>
+        <h3 class="svc-title">Product testing &amp; validation</h3>
+        <p class="svc-desc">Have a doctor, nurse or allied-health professional use your product, pressure-test it, and tell you what breaks.</p>
+        <div class="svc-foot"><span class="svc-tag">Available now</span><span class="svc-arw">→</span></div>
+      </div>
+      <div class="svc feature up">
+        <svg class="svc-wm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3m0 12v3m9-9h-3M6 12H3m13.5-6.5-2 2m-5 9-2 2m0-13 2 2m5 9 2 2"/><circle cx="12" cy="12" r="3.2"/></svg>
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3m0 12v3m9-9h-3M6 12H3m13.5-6.5-2 2m-5 9-2 2m0-13 2 2m5 9 2 2"/><circle cx="12" cy="12" r="3.2"/></svg></div>
+        <h3 class="svc-title">Medical AI evaluation</h3>
+        <p class="svc-desc">Clinician-in-the-loop annotation, model evaluation and RLHF. Onshore, credentialled, auditable.</p>
+        <div class="svc-foot"><span class="svc-tag">Flagship</span><span class="svc-arw">→</span></div>
+      </div>
+      <div class="svc up">
+        <svg class="svc-wm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><path d="M17.5 14v7M14 17.5h7"/></svg>
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><path d="M17.5 14v7M14 17.5h7"/></svg></div>
+        <h3 class="svc-title">Process, regulatory &amp; more</h3>
+        <p class="svc-desc">Explaining procedures, quality and ergonomics, aged care, medical writing, due diligence. If it needs a real professional, we cover it.</p>
+        <div class="svc-foot"><span class="svc-tag">On request</span><span class="svc-arw">→</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDGE -->
+  <section class="edge" id="edge">
+    <div class="edge-in">
+      <div>
+        <span class="label up">Why us</span>
+        <h2 class="type" style="margin-top:16px">Not a survey panel. Not a <span class="accent">LinkedIn advert.</span></h2>
+        <p class="up">Named, commercially-literate professionals, screened for product, private-sector and regulatory experience. Onshore, verified, and accountable for the deliverable.</p>
+        <ul class="proof up"><li>Registration checked</li><li>Scoped in writing</li><li>Fixed price per engagement</li></ul>
+      </div>
+      <div class="stat up">
+        <div class="fig"><span class="accent" data-count="27.5" data-suffix="%">27.5%</span></div>
+        <div class="lab">forecast annual growth in the global healthcare data annotation market to 2030, where credentialled clinician supply is the binding constraint.<span class="src">Grand View Research: USD 167.4m (2023) to USD 916.8m (2030). Other analysts forecast 21% to 28%.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section class="sec community" id="community">
+    <div class="sec-head">
+      <span class="label up">The bench</span>
+      <h2 class="type">Whatever discipline you need, <span class="accent">it is on the bench.</span></h2>
+      <p class="csub up">Doctors and specialists, nurses and nurse practitioners, physiotherapists, pharmacists, psychologists, dietitians, paramedics, radiographers, medical coders and practice administrators. Australian, registered, and used to explaining their reasoning to people who are not clinicians.</p>
+    </div>
+    <div class="comm-wrap up">
+      <figure class="comm">
+        <picture>
+          <source type="image/webp" srcset="/assets/img/atrium-480.webp 480w, /assets/img/atrium-768.webp 768w, /assets/img/atrium-1280.webp 1280w, /assets/img/atrium-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 1200px">
+          <img src="/assets/img/atrium-768.jpg" srcset="/assets/img/atrium-480.jpg 480w, /assets/img/atrium-768.jpg 768w, /assets/img/atrium-1280.jpg 1280w, /assets/img/atrium-1600.jpg 1600w" sizes="(max-width: 900px) 100vw, 1200px" width="2752" height="1536" loading="lazy" decoding="async" alt="Doctors, nurses, allied health professionals, medical coders and practice administrators talking together in a hospital atrium">
+        </picture>
+      </figure>
+    </div>
+  </section>
+
+  <!-- PEOPLE (imagery) -->
+  <section class="sec people" id="people">
+    <div class="sec-head">
+      <span class="label up">Who you get</span>
+      <h2 class="type">Named, credentialled, <span class="accent">commercially-literate.</span></h2>
+    </div>
+    <div class="ppl">
+      <figure class="pp up"><picture><source type="image/webp" srcset="/assets/img/advisory-480.webp 480w, /assets/img/advisory-768.webp 768w, /assets/img/advisory-1280.webp 1280w" sizes="(max-width: 760px) 100vw, 50vw"><img src="/assets/img/advisory-768.jpg" srcset="/assets/img/advisory-480.jpg 480w, /assets/img/advisory-768.jpg 768w, /assets/img/advisory-1280.jpg 1280w" sizes="(max-width: 760px) 100vw, 50vw" width="1024" height="687" loading="lazy" decoding="async" alt="Two clinicians reviewing work on a tablet"></picture><figcaption><span class="k">Doctors, nurses &amp; allied health</span><span class="t">Screened for product, private-sector and regulatory experience, not just specialty.</span></figcaption></figure>
+      <figure class="pp up"><picture><source type="image/webp" srcset="/assets/img/remote-480.webp 480w, /assets/img/remote-768.webp 768w, /assets/img/remote-1280.webp 1280w" sizes="(max-width: 760px) 100vw, 50vw"><img src="/assets/img/remote-768.jpg" srcset="/assets/img/remote-480.jpg 480w, /assets/img/remote-768.jpg 768w, /assets/img/remote-1280.jpg 1280w" sizes="(max-width: 760px) 100vw, 50vw" width="1024" height="687" loading="lazy" decoding="async" alt="A clinician on a remote video consultation"></picture><figcaption><span class="k">Matched to your problem</span><span class="t">Senior professionals, mostly working with you remotely, in person when it counts.</span></figcaption></figure>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec" id="faq">
+    <div class="sec-head">
+      <span class="label up">Common questions</span>
+      <h2 class="type">What teams ask before they <span class="accent">commission.</span></h2>
+    </div>
+    <div class="faq-wrap up">
+      <div class="faq">
+        <details>
+          <summary>What is Clinical Bench?</summary>
+          <p>Clinical Bench is an Australian marketplace that gives companies on-demand access to credentialled doctors, nurses and allied health professionals for commercial work: product testing, advisory boards, process and regulatory input, and medical AI evaluation.</p>
+        </details>
+        <details>
+          <summary>Who is on the bench?</summary>
+          <p>Registered doctors, nurses and allied health professionals based in Australia. They are screened for commercial experience, including product, private-sector and regulatory work, not just their clinical specialty.</p>
+        </details>
+        <details>
+          <summary>What can I commission?</summary>
+          <p>Common engagements are product testing and validation, sitting on an advisory board, mapping or explaining a care workflow, reviewing health claims, quality and ergonomics input, medical writing, due diligence, and clinician-in-the-loop evaluation of medical AI models.</p>
+        </details>
+        <details>
+          <summary>Is this clinical research or a CRO?</summary>
+          <p>No. Clinical Bench does not run clinical trials and is not a contract research organisation. We supply healthcare professionals for commercial work that needs their judgement and experience, outside direct patient care.</p>
+        </details>
+        <details>
+          <summary>How quickly can you match someone?</summary>
+          <p>Most engagements are matched within days rather than months. You send a short brief, we come back with who fits and how we would run it.</p>
+        </details>
+        <details>
+          <summary>How much does it cost?</summary>
+          <p>Engagements are quoted at a fixed price once the brief is scoped, so there are no open-ended hourly bills. Send an enquiry with what you need and we will come back with a price.</p>
+        </details>
+        <details>
+          <summary>Do clinicians endorse our product publicly?</summary>
+          <p>No. Clinical Bench supplies private professional input for your team. It is never a public endorsement, testimonial or advertisement for a product.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-sec" id="contact">
+    <div class="cta up">
+      <div class="in">
+        <span class="label" style="color:rgba(255,255,255,.6)">Enquire</span>
+        <h2 class="type" style="margin-top:16px">Tell us what you’re <span class="accent">building.</span></h2>
+        <p>A short brief is enough. We’ll come back with who fits and how we’d run it.</p>
+        <form class="form" id="enquiry-form" method="POST" action="/api/enquiry" novalidate>
+          <label class="sr" for="f-email">Work email</label><input id="f-email" name="email" type="email" placeholder="Work email" autocomplete="email" required>
+          <label class="sr" for="f-need">What do you need a clinician for?</label><input id="f-need" name="need" type="text" placeholder="What do you need a clinician for?">
+          <!-- honeypot: hidden from humans, tempting to bots -->
+          <div class="hp" aria-hidden="true"><label for="f-hp">Company website</label><input id="f-hp" name="company_website" type="text" tabindex="-1" autocomplete="off"></div>
+          <!-- Turnstile: replace data-sitekey with your real site key -->
+          <div class="cf-turnstile" data-sitekey="TURNSTILE_SITE_KEY" data-theme="dark" data-appearance="interaction-only"></div>
+          <button class="pill light mag" type="submit">Send brief &#8594;</button>
+        </form>
+        <p class="fine form-msg" role="status" aria-live="polite" style="display:none"></p>
+        <p class="fine">Private professional input, never public endorsement. We handle enquiries per our <a href="/privacy/" style="color:var(--accent-2)">privacy policy</a>.</p>
+        <p class="alt" id="clinicians">A clinician instead? <a href="/clinicians/">Apply to join the bench →</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot">
+    <div><div class="b"><svg class="mk" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="#1E7A5A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 4.4H6.6a2 2 0 0 0-2 2v11.2a2 2 0 0 0 2 2h1.6"/><path d="M15.8 4.4h1.6a2 2 0 0 1 2 2v11.2a2 2 0 0 1-2 2h-1.6"/></g><circle cx="12" cy="9.9" r="3" fill="#2E9D74"/><path d="M7.3 18.2a4.7 4.7 0 0 1 9.4 0Z" fill="#2E9D74"/></svg> Clinical Bench</div>
+      <p class="tg">On-demand access to doctors, nurses and allied health, for teams building in healthcare.</p></div>
+    <div><h4>Explore</h4><a href="#commission">Commission</a><a href="#edge">Why us</a><a href="#faq">FAQ</a><a href="/clinicians/">For clinicians</a><a href="#contact">Enquire</a></div>
+    <div><h4>Clinical Bench</h4><a href="#">Australia</a><a href="/privacy/">Privacy</a><a href="#">Terms</a></div>
+  </div>
+  <div class="foot-b"><span class="cmp">Supplies clinicians for commercial engagements. Not a clinical service. Nothing here is a public endorsement of any product.</span><span>© 2026 · Working identity</span></div>
+</footer>
+
+<script src="/assets/js/gsap.min.js"></script>
+<script src="/assets/js/ScrollTrigger.min.js"></script>
+<script src="/assets/js/lenis.min.js"></script>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+  var hdr=document.querySelector('header');
+  addEventListener('scroll',function(){hdr.classList.toggle('stuck',scrollY>10);},{passive:true});
+
+  /* hero background particle field (vanilla, always on unless reduced) */
+  (function(){
+    var cv=document.getElementById('hpart'); if(!cv||reduce)return; var ctx=cv.getContext('2d');
+    var W,H,DPR,ps=[],cols=['rgba(30,122,90,','rgba(122,162,255,','rgba(150,146,137,'];
+    function size(){DPR=Math.min(devicePixelRatio||1,2);W=cv.offsetWidth;H=cv.offsetHeight;cv.width=W*DPR|0;cv.height=H*DPR|0;ctx.setTransform(DPR,0,0,DPR,0,0);build();}
+    function build(){ps=[];var n=Math.round(W/16);for(var i=0;i<n;i++){ps.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,r:Math.random()*1.6+.6,a:Math.random()*.35+.12,c:cols[i%3],ln:Math.random()>.6});}}
+    function frame(){ctx.clearRect(0,0,W,H);for(var i=0;i<ps.length;i++){var p=ps[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.strokeStyle=ctx.fillStyle=p.c+p.a+')';if(p.ln){ctx.lineWidth=p.r;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p.x+4,p.y+4);ctx.stroke();}else{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fill();}}
+      requestAnimationFrame(frame);}
+    size();addEventListener('resize',size);requestAnimationFrame(frame);
+  })();
+
+  /* DNA double helix — icons anchored to two twisting strands (vanilla, always on) */
+  (function(){
+    var host=document.querySelector('.helix'); if(!host)return;
+    var NS='http://www.w3.org/2000/svg', reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var icons=[
+      // doctors: stethoscope
+      ['Doctors','<svg viewBox="0 0 24 24"><path d="M6 3v5a4 4 0 0 0 8 0V3M6 3H4.5M14 3h1.5M10 12v2.5a4.5 4.5 0 0 0 9 0V13"/><circle cx="19" cy="11" r="2"/></svg>'],
+      // nursing & monitoring: clinical trace
+      ['Nursing','<svg viewBox="0 0 24 24"><path d="M3 12h3.5l2-5 3 10 2-5.5 1.5 3H21"/></svg>'],
+      // aged & community care: hand holding heart
+      ['Aged care','<svg viewBox="0 0 24 24"><path d="M12 12.4s-3.4-2.7-3.4-4.8A2.2 2.2 0 0 1 12 5.8a2.2 2.2 0 0 1 3.4 1.8c0 2.1-3.4 4.8-3.4 4.8Z"/><path d="M5 15.6c2.6 3.4 11.4 3.4 14 0"/><path d="M5 15.6V18M19 15.6V18"/></svg>'],
+      // pharmacy
+      ['Pharmacy','<svg viewBox="0 0 24 24"><rect x="3.2" y="8.6" width="17.6" height="9.4" rx="4.7"/><path d="M12 8.6v9.4"/></svg>'],
+      // psychology
+      ['Psychology','<svg viewBox="0 0 24 24"><path d="M12 5.2a3.4 3.4 0 0 0-3.4 3.4A3 3 0 0 0 6 11.4a3 3 0 0 0 1.6 2.6A3 3 0 0 0 10 18.6a2.8 2.8 0 0 0 2-.8V5.2Z"/><path d="M12 5.2a3.4 3.4 0 0 1 3.4 3.4A3 3 0 0 1 18 11.4a3 3 0 0 1-1.6 2.6A3 3 0 0 1 14 18.6a2.8 2.8 0 0 1-2-.8"/></svg>'],
+      // physiotherapy: movement
+      ['Physiotherapy','<svg viewBox="0 0 24 24"><circle cx="14.4" cy="4.6" r="1.8"/><path d="m8 20 2.6-4.4-2.2-3 1.4-4.2 3.6-1.2 2.6 2.6 2.8 1"/><path d="m10.4 15.6 3.4 1.4 1.2 3.4M8.6 8.4 5.4 10l-.8 3"/></svg>'],
+      // speech pathology
+      ['Speech pathology','<svg viewBox="0 0 24 24"><path d="M4.6 6.8A2.6 2.6 0 0 1 7.2 4.2h9.6a2.6 2.6 0 0 1 2.6 2.6v6a2.6 2.6 0 0 1-2.6 2.6h-5.2L7.4 18.6v-3.2h-.2a2.6 2.6 0 0 1-2.6-2.6Z"/><path d="M8.6 8.8v2.6M12 7.6v5M15.4 8.8v2.6"/></svg>'],
+      // radiography / imaging
+      ['Imaging','<svg viewBox="0 0 24 24"><rect x="3.4" y="3.4" width="17.2" height="17.2" rx="3"/><path d="M3.4 12h17.2M12 3.4v17.2" opacity=".45"/><circle cx="12" cy="12" r="3.4"/></svg>'],
+      // paramedics: emergency cross
+      ['Paramedics','<svg viewBox="0 0 24 24"><path d="M9.6 3.6h4.8v6h6v4.8h-6v6H9.6v-6h-6V9.6h6Z"/></svg>'],
+      // product testing / devices
+      ['Device testing','<svg viewBox="0 0 24 24"><rect x="6.4" y="2.8" width="11.2" height="18.4" rx="2.4"/><path d="M10.6 5.6h2.8M9.4 12.4l1.8 1.8 3.4-3.6"/></svg>'],
+      // medical AI evaluation
+      ['Medical AI','<svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2.4"/><path d="M10.6 10.6h2.8v2.8h-2.8z"/><path d="M12 3.4V7M12 17v3.6M3.4 12H7M17 12h3.6"/></svg>'],
+      // regulatory & quality
+      ['Regulatory','<svg viewBox="0 0 24 24"><path d="M12 3.2 19.4 6v5.4c0 4.6-3.2 7.6-7.4 9.4-4.2-1.8-7.4-4.8-7.4-9.4V6Z"/><path d="m9.2 12 2 2 3.6-3.8"/></svg>'],
+      // medical writing
+      ['Medical writing','<svg viewBox="0 0 24 24"><path d="M6.4 3.4h7.4l4.8 4.8v12.4H6.4Z"/><path d="M13.4 3.5v4.9h4.9M9.2 13h5.6M9.2 16.4h4"/></svg>'],
+      // medical coding
+      ['Medical coding','<svg viewBox="0 0 24 24"><path d="M9.4 4.6 6 12l3.4 7.4M14.6 4.6 18 12l-3.4 7.4"/><path d="M10.4 15.6h3.2"/></svg>'],
+      // advisory boards
+      ['Advisory','<svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="2.6"/><circle cx="5.2" cy="16.4" r="2.4"/><circle cx="18.8" cy="16.4" r="2.4"/><path d="M10 9.2 6.8 14.4M14 9.2l3.2 5.2M7.6 17.6h8.8"/></svg>'],
+      // practice administration
+      ['Practice admin','<svg viewBox="0 0 24 24"><rect x="3.4" y="5.6" width="17.2" height="14.6" rx="2.4"/><path d="M3.4 10.2h17.2M8 3.4v4M16 3.4v4M8.4 14.2h3.2"/></svg>']
+    ];
+    var PER=14, SAMPLES=64, cycles=2.15;
+    var svg=document.createElementNS(NS,'svg'); svg.setAttribute('class','strands'); svg.setAttribute('preserveAspectRatio','none'); host.appendChild(svg);
+    var sA=document.createElementNS(NS,'polyline'); sA.setAttribute('class','strand'); svg.appendChild(sA);
+    var sB=document.createElementNS(NS,'polyline'); sB.setAttribute('class','strand'); svg.appendChild(sB);
+    var rungs=[]; for(var i=0;i<PER;i++){var r=document.createElementNS(NS,'line'); r.setAttribute('class','rung'); svg.appendChild(r); rungs.push(r);}
+    var chips=[]; for(var s=0;s<2;s++){for(var i=0;i<PER;i++){var n=s*PER+i, ic=icons[n%icons.length];
+      var el=document.createElement('div'); el.className='hx'+((n%5===0)?' acc':'');
+      el.innerHTML=ic[1]+'<span class="hx-l">'+ic[0]+'</span>';
+      el.setAttribute('title',ic[0]);
+      host.appendChild(el); chips.push({el:el,strand:s,t:i/(PER-1),lit:0});}}
+    var W=0,H=0,phase=0,raf=null;
+    function size(){var r=host.getBoundingClientRect(); W=r.width; H=r.height; svg.setAttribute('viewBox','0 0 '+W+' '+H);}
+    function P(strand,t){var ang=t*cycles*6.283+phase+(strand?Math.PI:0); return {x:40+t*(W-80), y:H/2+(H*0.34)*Math.sin(ang), d:Math.cos(ang)};}
+    function draw(){
+      var a=[],b=[]; for(var i=0;i<=SAMPLES;i++){var t=i/SAMPLES,pa=P(0,t),pb=P(1,t); a.push(pa.x.toFixed(1)+','+pa.y.toFixed(1)); b.push(pb.x.toFixed(1)+','+pb.y.toFixed(1));}
+      sA.setAttribute('points',a.join(' ')); sB.setAttribute('points',b.join(' ')); sA.setAttribute('stroke-opacity','0.16'); sB.setAttribute('stroke-opacity','0.16');
+      for(var i=0;i<PER;i++){var t=i/(PER-1),pa=P(0,t),pb=P(1,t),rr=rungs[i];
+        rr.setAttribute('x1',pa.x.toFixed(1));rr.setAttribute('y1',pa.y.toFixed(1));rr.setAttribute('x2',pb.x.toFixed(1));rr.setAttribute('y2',pb.y.toFixed(1));
+        rr.setAttribute('stroke-opacity',(0.05+0.08*((pa.d+pb.d)/2+0.5)).toFixed(3));}
+      var wave=(phase*0.16)%1;                                  // light running along the helix
+      for(var c=0;c<chips.length;c++){var ch=chips[c],p=P(ch.strand,ch.t),k=(p.d+1)/2;
+        var dist=Math.abs(ch.t-wave); if(dist>0.5)dist=1-dist;    // wrap
+        var lit=Math.max(0,1-dist/0.13);                          // 0..1 proximity to the light
+        var sc=(0.58+0.46*k)*(1+0.16*lit), op=0.32+0.68*k;
+        ch.el.style.transform='translate('+p.x.toFixed(1)+'px,'+p.y.toFixed(1)+'px) translate(-50%,-50%) scale('+sc.toFixed(3)+')';
+        ch.el.style.opacity=op.toFixed(3);
+        ch.el.style.filter=k<0.5?('blur('+((0.5-k)*2.2).toFixed(2)+'px)'):'none';   // depth of field
+        ch.el.style.zIndex=String(10+Math.round(k*40)+Math.round(lit*30));
+        if((lit>0.35)!==(ch.lit>0.35)){ch.el.classList.toggle('lit',lit>0.35);} ch.lit=lit;}
+    }
+    function tick(){phase+=0.006; draw(); raf=requestAnimationFrame(tick);}
+    size(); addEventListener('resize',function(){size();draw();}); draw();
+    if(!reduce){ raf=requestAnimationFrame(tick);
+      if('IntersectionObserver'in window){new IntersectionObserver(function(en){en.forEach(function(x){ if(x.isIntersecting){ if(!raf)raf=requestAnimationFrame(tick);} else if(raf){cancelAnimationFrame(raf);raf=null;} });},{threshold:0}).observe(host);}
+    }
+  })();
+
+  /* panel particle field: slow drifting motes + faint connection lines */
+  (function(){
+    var cv=document.getElementById('ppart'); if(!cv)return;
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    var ctx=cv.getContext('2d'), W=0,H=0,DPR=1,ps=[],raf=null,vis=true;
+    function size(){DPR=Math.min(devicePixelRatio||1,2);W=cv.offsetWidth;H=cv.offsetHeight;
+      cv.width=(W*DPR)|0;cv.height=(H*DPR)|0;ctx.setTransform(DPR,0,0,DPR,0,0);build();}
+    function build(){ps=[];var n=Math.max(18,Math.round(W/38));
+      for(var i=0;i<n;i++)ps.push({x:Math.random()*W,y:Math.random()*H,
+        vx:(Math.random()-.5)*.16,vy:(Math.random()-.5)*.16,r:Math.random()*1.5+.5,a:Math.random()*.5+.2});}
+    function frame(){
+      ctx.clearRect(0,0,W,H);
+      for(var i=0;i<ps.length;i++){var p=ps[i];p.x+=p.vx;p.y+=p.vy;
+        if(p.x<-10)p.x=W+10; if(p.x>W+10)p.x=-10; if(p.y<-10)p.y=H+10; if(p.y>H+10)p.y=-10;
+        for(var j=i+1;j<ps.length;j++){var q=ps[j],dx=p.x-q.x,dy=p.y-q.y,d2=dx*dx+dy*dy;
+          if(d2<11000){ctx.strokeStyle='rgba(103,224,166,'+(0.10*(1-d2/11000)).toFixed(3)+')';
+            ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();}}
+        ctx.fillStyle='rgba(150,235,196,'+p.a.toFixed(2)+')';
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fill();}
+      raf=requestAnimationFrame(frame);}
+    size();addEventListener('resize',size);
+    if('IntersectionObserver'in window){
+      new IntersectionObserver(function(en){en.forEach(function(x){
+        if(x.isIntersecting){if(!raf)raf=requestAnimationFrame(frame);}
+        else if(raf){cancelAnimationFrame(raf);raf=null;}});},{threshold:0}).observe(cv);
+    } else { raf=requestAnimationFrame(frame); }
+  })();
+
+  /* HERO rotating typewriter: types a plain-English use-case, deletes it, types the next, loops */
+  (function(){
+    var h=document.querySelector('.hh'); if(!h)return;
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var base="Credentialled clinicians, on demand for ";
+    var phrases=["testing your health device","your advisory board","checking your product is safe","mapping a care workflow","reviewing your health claims","training your medical AI"];
+    h.innerHTML='<span class="tw-b"></span><span class="tw-line"><span class="tw-r"></span><span class="caret" aria-hidden="true"></span></span>';
+    var bEl=h.querySelector('.tw-b'), rEl=h.querySelector('.tw-r'); bEl.textContent=base;
+    var ph=0;
+    function type(el,str,sp,cb){var k=0;(function s(){k++;el.textContent=str.slice(0,k);if(k<str.length)setTimeout(s,sp+Math.random()*32);else if(cb)setTimeout(cb,0);})();}
+    function del(el,sp,cb){var str=el.textContent,k=str.length;(function s(){k--;el.textContent=str.slice(0,Math.max(0,k));if(k>0)setTimeout(s,sp);else if(cb)cb();})();}
+    function loop(){ type(rEl,phrases[ph],52,function(){ setTimeout(function(){ del(rEl,26,function(){ ph=(ph+1)%phrases.length; setTimeout(loop,240); }); },2000); }); }
+    setTimeout(loop,350);
+  })();
+
+  /* split any element's text into .ch spans (preserving nested spans, skipping caret) */
+  function split(node){[].slice.call(node.childNodes).forEach(function(n){
+    if(n.nodeType===3){var f=document.createDocumentFragment();n.textContent.split('').forEach(function(c){var s=document.createElement('span');s.className='ch';s.textContent=c;f.appendChild(s);});node.replaceChild(f,n);}
+    else if(n.nodeType===1&&!n.classList.contains('caret')){split(n);}});}
+  document.querySelectorAll('.type').forEach(function(h){split(h);var c=document.createElement('span');c.className='caret';c.setAttribute('aria-hidden','true');h.appendChild(c);});
+
+  if(!window.gsap){ if(window.__reveal)window.__reveal(); return; }
+  window.__animOK=true; if(window.__fs)clearTimeout(window.__fs);
+  gsap.registerPlugin(ScrollTrigger);
+
+  var lenis=null;
+  if(!reduce&&window.Lenis){lenis=new Lenis({duration:1.15,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});
+    (function raf(t){lenis.raf(t);requestAnimationFrame(raf);})();lenis.on('scroll',ScrollTrigger.update);}
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var el=document.querySelector(a.getAttribute('href'));if(!el)return;e.preventDefault();if(lenis)lenis.scrollTo(el,{offset:-70});else el.scrollIntoView({behavior:reduce?'auto':'smooth'});});});
+
+  function typeIn(h,delay){
+    var chars=h.querySelectorAll('.ch'), caret=h.querySelector('.caret'), t=gsap.timeline({delay:delay||0});
+    gsap.set(h,{opacity:1}); gsap.set(chars,{opacity:0}); if(caret)gsap.set(caret,{opacity:1});
+    // park the caret before the first character so it starts at the left
+    if(caret&&chars.length&&chars[0].parentNode)chars[0].parentNode.insertBefore(caret,chars[0]);
+    t.to(chars,{opacity:1,duration:.04,ease:'none',stagger:{each:.022,onStart:function(){
+      var el=this.targets()[0];
+      if(caret&&el&&el.parentNode){ el.parentNode.insertBefore(caret, el.nextSibling); } // caret follows the char just typed
+    }}});
+    if(caret)t.to(caret,{opacity:0,duration:.5,repeat:-1,yoyo:true,ease:'power1.inOut'},'>-.05');
+    return t;
+  }
+
+  if(reduce){
+    gsap.set(['.up','.hx'],{opacity:1,y:0}); document.querySelectorAll('.type').forEach(function(h){gsap.set(h,{opacity:1});gsap.set(h.querySelectorAll('.ch'),{opacity:1});});
+    gsap.utils.toArray('[data-count]').forEach(function(el){el.textContent=el.getAttribute('data-count')+(el.getAttribute('data-suffix')||'');});
+    return;
+  }
+
+  /* HERO supporting elements reveal (H1 is driven by the vanilla typewriter) */
+  gsap.to('.hero .up',{opacity:1,y:0,duration:.9,ease:'power3.out',stagger:.12,delay:.25});
+
+  /* section headings type in on scroll */
+  gsap.utils.toArray('.type').forEach(function(h){ if(h.closest('.hero'))return;
+    ScrollTrigger.create({trigger:h,start:'top 82%',once:true,onEnter:function(){typeIn(h);}});});
+
+  /* generic reveals */
+  gsap.utils.toArray('.up').forEach(function(e){ if(e.closest('.hero')||e.classList.contains('svc'))return;
+    gsap.to(e,{opacity:1,y:0,duration:.95,ease:'power3.out',scrollTrigger:{trigger:e,start:'top 88%'}});});
+
+  /* panel scale-in (from CSS-hidden state) */
+  gsap.to('.panel',{opacity:1,scale:1,duration:1.3,ease:'expo.out',scrollTrigger:{trigger:'.panel',start:'top 88%'}});
+
+  /* cards stagger */
+  ScrollTrigger.batch('.cards .svc',{start:'top 86%',onEnter:function(els){gsap.to(els,{opacity:1,y:0,duration:.8,ease:'power3.out',stagger:.1});}});
+
+  /* count-up */
+  gsap.utils.toArray('[data-count]').forEach(function(el){var end=+el.getAttribute('data-count'),suf=el.getAttribute('data-suffix')||'',dec=(String(end).split('.')[1]||'').length,o={v:0};
+    ScrollTrigger.create({trigger:el,start:'top 85%',once:true,onEnter:function(){gsap.to(o,{v:end,duration:1.4,ease:'power2.out',onUpdate:function(){el.textContent=o.v.toFixed(dec)+suf;}});}});});
+
+  /* magnetic pills */
+  if(fine){document.querySelectorAll('.mag').forEach(function(b){
+    b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();gsap.to(b,{x:(e.clientX-r.left-r.width/2)*.2,y:(e.clientY-r.top-r.height/2)*.3,duration:.4,ease:'power3'});});
+    b.addEventListener('mouseleave',function(){gsap.to(b,{x:0,y:0,duration:.6,ease:'elastic.out(1,.4)'});});});}
+
+  ScrollTrigger.refresh();
+})();
+</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+(function(){
+  var form=document.getElementById('enquiry-form');
+  if(!form)return;
+  var msg=document.querySelector('.form-msg');
+  var btn=form.querySelector('button[type=submit]');
+  function say(text,kind){msg.textContent=text;msg.className='fine form-msg '+(kind||'');msg.style.display='block';}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=form.querySelector('#f-email');
+    if(!email.value||!email.checkValidity()){say('Please enter a valid work email.','err');email.focus();return;}
+    btn.disabled=true; var label=btn.textContent; btn.textContent='Sending...';
+    fetch('/api/enquiry',{method:'POST',body:new FormData(form)})
+      .then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
+      .then(function(res){
+        if(res.ok&&res.d&&res.d.ok){
+          form.reset();
+          say('Thanks. We will come back with who fits and how we would run it.','ok');
+        } else {
+          say((res.d&&res.d.error)||'Something went wrong. Please email hello@theclinicalbench.com','err');
+          if(window.turnstile)window.turnstile.reset();
+        }
+      })
+      .catch(function(){say('Network error. Please email hello@theclinicalbench.com','err');})
+      .finally(function(){btn.disabled=false;btn.textContent=label;});
+  });
+})();
+</script>
+<!-- Cloudflare Web Analytics (cookieless).
+     Easiest path: Cloudflare dashboard > Web Analytics > add this site, and let it
+     auto-inject. If you prefer to hardcode it, uncomment below and paste your token.
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "YOUR_TOKEN"}'></script>
+-->
+</body>
+</html>

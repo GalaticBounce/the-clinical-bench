@@ -1,0 +1,9 @@
+<!-- Clinical Bench primary mark. Use at 22px and above. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="128" height="128" fill="none">
+  <g fill="none" stroke="#1E7A5A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8.2 4.4H6.6a2 2 0 0 0-2 2v11.2a2 2 0 0 0 2 2h1.6"/>
+    <path d="M15.8 4.4h1.6a2 2 0 0 1 2 2v11.2a2 2 0 0 1-2 2h-1.6"/>
+  </g>
+  <circle cx="12" cy="9.9" r="3" fill="#2E9D74"/>
+  <path d="M7.3 18.2a4.7 4.7 0 0 1 9.4 0Z" fill="#2E9D74"/>
+</svg>

@@ -1,0 +1,52 @@
+# Clinical Bench
+
+> Clinical Bench is an Australian marketplace that gives companies on-demand access to
+> credentialled doctors, nurses and allied health professionals for commercial work
+> outside direct patient care.
+
+## What it is
+Clinical Bench matches companies building health products with registered Australian
+healthcare professionals for commercial engagements. It is not a clinical service, not a
+contract research organisation, and does not run clinical trials.
+
+## Who is on the bench
+Registered doctors (GP and specialist), registered nurses, nurse practitioners,
+physiotherapists, occupational therapists, pharmacists, psychologists, dietitians,
+speech pathologists, paramedics, radiographers, medical coders, and practice
+managers and administrators. All Australian based and registration-checked.
+
+## What can be commissioned
+- Product testing and validation: a professional uses the product and reports what breaks.
+- Advisory boards: senior clinical input on direction, safety and positioning.
+- Medical AI evaluation: clinician-in-the-loop annotation, model evaluation and RLHF.
+- Process and procedure input: mapping or explaining care workflows.
+- Regulatory, quality and ergonomics review.
+- Medical writing and clinical due diligence.
+
+## How it works
+1. Scope: the company sends a brief describing the problem.
+2. Match: Clinical Bench selects a screened professional with relevant experience.
+3. Run: the engagement runs to an agreed written brief, mostly remotely.
+4. Deliver: findings are written up so the company can act on them.
+
+Engagements are typically matched in days and quoted at a fixed price per engagement.
+
+## Key facts
+- Based in Australia; professionals are Australian based and onshore.
+- Input is private and professional. It is never a public endorsement or testimonial.
+- Registration is checked before matching.
+- Engagements are scoped in writing with a fixed fee agreed before work starts.
+
+## Market context
+The global healthcare data annotation market is forecast to grow from USD 167.4 million
+(2023) to USD 916.8 million (2030), a CAGR of about 27.5% (Grand View Research). Other
+analyst forecasts for the same segment range from 21% to 28%. Credentialled clinician
+supply is the binding constraint on that growth.
+
+## Pages
+- Home and services: https://theclinicalbench.com/
+- For clinicians (recruitment): https://theclinicalbench.com/clinicians/
+- Privacy policy: https://theclinicalbench.com/privacy/
+
+## Contact
+hello@theclinicalbench.com

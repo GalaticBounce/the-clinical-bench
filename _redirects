@@ -1,0 +1,13 @@
+# Cloudflare Pages redirects.
+#
+# NOTE: _redirects matches on PATH, not hostname, so it cannot send
+# www.theclinicalbench.com to theclinicalbench.com on its own.
+# Do the apex/www redirect in the dashboard instead:
+#   Cloudflare > your domain > Rules > Redirect Rules > Create
+#   If hostname equals www.theclinicalbench.com
+#   Then dynamic redirect 301 to
+#   concat("https://theclinicalbench.com", http.request.uri.path)
+#   with "preserve query string" enabled.
+#
+# Path-level redirects go below, one per line:
+# /old-path  /new-path  301

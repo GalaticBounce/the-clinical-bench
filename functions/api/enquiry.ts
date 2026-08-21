@@ -1,0 +1,160 @@
+/**
+ * POST /api/enquiry
+ *
+ * Handles the Clinical Bench enquiry form.
+ * Flow: validate input -> verify Cloudflare Turnstile -> send email via Resend.
+ *
+ * Required Pages environment variables (Settings > Environment variables):
+ *   TURNSTILE_SECRET_KEY  (secret) - from Cloudflare Turnstile
+ *   RESEND_API_KEY        (secret) - from Resend, "Sending access" only
+ *   ENQUIRY_TO            (plain)  - inbox that receives enquiries
+ *   ENQUIRY_FROM          (plain)  - verified sender, e.g. website@theclinicalbench.com
+ *
+ * Docs:
+ *   Turnstile server-side validation: https://developers.cloudflare.com/turnstile/get-started/server-side-validation/
+ *   Resend send email API:            https://resend.com/docs/api-reference/emails/send-email
+ */
+
+interface Env {
+  TURNSTILE_SECRET_KEY: string;
+  RESEND_API_KEY: string;
+  ENQUIRY_TO: string;
+  ENQUIRY_FROM: string;
+}
+
+interface TurnstileVerifyResponse {
+  success: boolean;
+  'error-codes'?: string[];
+}
+
+const MAX_EMAIL = 254;
+const MAX_MESSAGE = 2000;
+
+function json(body: unknown, status: number): Response {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Cache-Control': 'no-store',
+    },
+  });
+}
+
+/** Deliberately permissive: real validation is the confirmation email bouncing. */
+function isEmail(value: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && value.length <= MAX_EMAIL;
+}
+
+function escapeHtml(input: string): string {
+  return input
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+export const onRequestPost: PagesFunction<Env> = async (context) => {
+  const { request, env } = context;
+
+  // Fail loudly in logs if the project is misconfigured, but stay vague to the client.
+  if (!env.TURNSTILE_SECRET_KEY || !env.RESEND_API_KEY || !env.ENQUIRY_TO || !env.ENQUIRY_FROM) {
+    console.error('enquiry: missing environment variables');
+    return json({ ok: false, error: 'Server not configured.' }, 500);
+  }
+
+  let form: FormData;
+  try {
+    form = await request.formData();
+  } catch {
+    return json({ ok: false, error: 'Invalid request.' }, 400);
+  }
+
+  const email = String(form.get('email') ?? '').trim();
+  const need = String(form.get('need') ?? '').trim().slice(0, MAX_MESSAGE);
+  const token = String(form.get('cf-turnstile-response') ?? '');
+  const honeypot = String(form.get('company_website') ?? ''); // hidden field, humans leave it empty
+
+  if (honeypot) {
+    // Bot: return success so it does not retry or probe.
+    return json({ ok: true }, 200);
+  }
+  if (!isEmail(email)) {
+    return json({ ok: false, error: 'Please enter a valid work email.' }, 400);
+  }
+  if (!token) {
+    return json({ ok: false, error: 'Please complete the verification check.' }, 400);
+  }
+
+  // --- Turnstile server-side verification ---
+  const verifyBody = new FormData();
+  verifyBody.append('secret', env.TURNSTILE_SECRET_KEY);
+  verifyBody.append('response', token);
+  const ip = request.headers.get('CF-Connecting-IP');
+  if (ip) verifyBody.append('remoteip', ip);
+
+  let verdict: TurnstileVerifyResponse;
+  try {
+    const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body: verifyBody,
+    });
+    verdict = await verifyRes.json<TurnstileVerifyResponse>();
+  } catch (err) {
+    console.error('enquiry: turnstile request failed', err);
+    return json({ ok: false, error: 'Verification unavailable. Please try again.' }, 502);
+  }
+
+  if (!verdict.success) {
+    console.warn('enquiry: turnstile rejected', verdict['error-codes']);
+    return json({ ok: false, error: 'Verification failed. Please try again.' }, 403);
+  }
+
+  // --- Send the enquiry ---
+  const submittedAt = new Date().toISOString();
+  const country = request.headers.get('CF-IPCountry') ?? 'unknown';
+  const safeEmail = escapeHtml(email);
+  const safeNeed = escapeHtml(need || 'Not supplied');
+
+  try {
+    const sendRes = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: `Clinical Bench <${env.ENQUIRY_FROM}>`,
+        to: [env.ENQUIRY_TO],
+        reply_to: email,
+        subject: `Enquiry from ${email}`,
+        text: `New enquiry\n\nEmail: ${email}\nNeed: ${need || 'Not supplied'}\nCountry: ${country}\nSubmitted: ${submittedAt}\n`,
+        html:
+          `<h2 style="font-family:system-ui,sans-serif">New enquiry</h2>` +
+          `<p style="font-family:system-ui,sans-serif"><strong>Email:</strong> ${safeEmail}<br>` +
+          `<strong>Need:</strong> ${safeNeed}<br>` +
+          `<strong>Country:</strong> ${escapeHtml(country)}<br>` +
+          `<strong>Submitted:</strong> ${submittedAt}</p>`,
+      }),
+    });
+
+    if (!sendRes.ok) {
+      const detail = await sendRes.text();
+      console.error('enquiry: resend failed', sendRes.status, detail);
+      return json({ ok: false, error: 'Could not send right now. Please email us directly.' }, 502);
+    }
+  } catch (err) {
+    console.error('enquiry: resend request threw', err);
+    return json({ ok: false, error: 'Could not send right now. Please email us directly.' }, 502);
+  }
+
+  return json({ ok: true }, 200);
+};
+
+/** Anything other than POST gets a clear answer rather than the SPA shell. */
+export const onRequest: PagesFunction<Env> = async (context) => {
+  if (context.request.method !== 'POST') {
+    return json({ ok: false, error: 'Method not allowed.' }, 405);
+  }
+  return context.next();
+};
