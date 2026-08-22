@@ -126,7 +126,14 @@ h1{font-size:clamp(38px,6vw,74px);font-weight:700;letter-spacing:-.04em;margin:2
 .apply .fine a{color:var(--accent-2);font-weight:600;text-decoration:underline}
 .form-msg{margin-top:16px;font-size:14px;display:none}
 .form-msg.err{color:#ffb4a8}.form-msg.ok{color:var(--accent-2)}
+.spec-label{display:block;font-size:13px;color:rgba(255,255,255,.6);margin-bottom:8px}
+.spec-row{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;margin-bottom:10px}
+.spec-row input{margin:0}
+.spec-remove{background:transparent;border:1px solid rgba(255,255,255,.18);border-radius:12px;color:rgba(255,255,255,.6);width:44px;cursor:pointer;font-size:18px;line-height:1}
+.spec-remove:hover{color:#fff;border-color:var(--accent-2)}
+.spec-add{margin-top:2px;background:none;border:none;color:var(--accent-2);font-weight:600;font-size:14px;cursor:pointer;padding:0}
 @media(max-width:700px){.form{grid-template-columns:1fr}}
+@media(max-width:520px){.spec-row{grid-template-columns:1fr}}
 
 footer{padding:clamp(46px,6vw,72px) 0 38px}
 .foot{max-width:var(--maxw);margin:0 auto;padding:0 var(--mx);display:grid;grid-template-columns:2fr 1fr 1fr;gap:36px}
@@ -273,6 +280,7 @@ html.anim .up{opacity:0;transform:translateY(24px)}
         <form class="form" id="clinician-form" method="POST" action="/api/clinician" novalidate>
           <div><label class="sr" for="c-name">Full name</label><input id="c-name" name="name" type="text" placeholder="Full name" autocomplete="name" required></div>
           <div><label class="sr" for="c-email">Email</label><input id="c-email" name="email" type="email" placeholder="Email" autocomplete="email" required></div>
+          <div><label class="sr" for="c-phone">Phone number</label><input id="c-phone" name="phone" type="tel" placeholder="Phone number" autocomplete="tel" required></div>
           <div>
             <label class="sr" for="c-disc">Discipline</label>
             <select id="c-disc" name="discipline" required>
@@ -288,6 +296,18 @@ html.anim .up{opacity:0;transform:translateY(24px)}
             </select>
           </div>
           <div><label class="sr" for="c-reg">Registration number</label><input id="c-reg" name="registration" type="text" placeholder="AHPRA or professional body number"></div>
+          <div class="full">
+            <span class="spec-label">Specialties &amp; grade</span>
+            <div id="spec-rows">
+              <div class="spec-row">
+                <label class="sr" for="c-spec-0">Specialty</label>
+                <input id="c-spec-0" name="specialty[]" type="text" placeholder="Specialty (e.g. Cardiology)">
+                <label class="sr" for="c-grade-0">Grade</label>
+                <input id="c-grade-0" name="grade[]" type="text" placeholder="Grade (e.g. Consultant, Registrar, RN)">
+              </div>
+            </div>
+            <button type="button" class="spec-add" id="spec-add">+ Add another specialty</button>
+          </div>
           <div class="full"><label class="sr" for="c-int">What interests you?</label><textarea id="c-int" name="interest" placeholder="What kind of work interests you, and what is your background?"></textarea></div>
           <div class="hp" aria-hidden="true"><label for="c-hp">Company website</label><input id="c-hp" name="company_website" type="text" tabindex="-1" autocomplete="off"></div>
           <div class="full cf-turnstile" data-sitekey="0x4AAAAAAEYJ4igcK_WYWRUk" data-theme="dark" data-appearance="interaction-only"></div>
@@ -338,11 +358,30 @@ html.anim .up{opacity:0;transform:translateY(24px)}
   if(!form)return;
   var msg=document.querySelector('.form-msg'), btn=form.querySelector('button[type=submit]');
   function say(t,k){msg.textContent=t;msg.className='form-msg '+(k||'');msg.style.display='block';}
+  // dynamic specialty + grade rows
+  var specRows=form.querySelector('#spec-rows'), specAdd=form.querySelector('#spec-add'), specN=1;
+  if(specRows&&specAdd){
+    specAdd.addEventListener('click',function(){
+      var row=document.createElement('div');
+      row.className='spec-row';
+      row.innerHTML='<label class="sr" for="c-spec-'+specN+'">Specialty</label>'+
+        '<input id="c-spec-'+specN+'" name="specialty[]" type="text" placeholder="Specialty (e.g. Cardiology)">'+
+        '<label class="sr" for="c-grade-'+specN+'">Grade</label>'+
+        '<input id="c-grade-'+specN+'" name="grade[]" type="text" placeholder="Grade (e.g. Consultant, Registrar, RN)">'+
+        '<button type="button" class="spec-remove" aria-label="Remove specialty">&times;</button>';
+      specN++;
+      specRows.appendChild(row);
+    });
+    specRows.addEventListener('click',function(e){
+      if(e.target.classList.contains('spec-remove')){e.target.closest('.spec-row').remove();}
+    });
+  }
   form.addEventListener('submit',function(e){
     e.preventDefault();
-    var name=form.querySelector('#c-name'),email=form.querySelector('#c-email'),disc=form.querySelector('#c-disc');
+    var name=form.querySelector('#c-name'),email=form.querySelector('#c-email'),phone=form.querySelector('#c-phone'),disc=form.querySelector('#c-disc');
     if(!name.value.trim()){say('Please enter your name.','err');name.focus();return;}
     if(!email.checkValidity()){say('Please enter a valid email.','err');email.focus();return;}
+    if(!phone.value.trim()){say('Please enter a phone number.','err');phone.focus();return;}
     if(!disc.value){say('Please select your discipline.','err');disc.focus();return;}
     btn.disabled=true;var lab=btn.textContent;btn.textContent='Sending...';
     fetch('/api/clinician',{method:'POST',body:new FormData(form)})

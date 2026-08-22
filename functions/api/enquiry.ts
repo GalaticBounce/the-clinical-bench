@@ -33,6 +33,8 @@ interface TurnstileVerifyResponse {
 
 const MAX_EMAIL = 254;
 const MAX_MESSAGE = 2000;
+const MAX_PHONE = 30;
+const MAX_SERVICES = 10;
 
 function json(body: unknown, status: number): Response {
   return new Response(JSON.stringify(body), {
@@ -75,6 +77,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }
 
   const email = String(form.get('email') ?? '').trim();
+  const phone = String(form.get('phone') ?? '').trim().slice(0, MAX_PHONE);
+  const occupation = String(form.get('occupation') ?? '').trim().slice(0, 80);
+  const services = form.getAll('services').map((v) => String(v).trim().slice(0, 80)).filter(Boolean).slice(0, MAX_SERVICES);
   const need = String(form.get('need') ?? '').trim().slice(0, MAX_MESSAGE);
   const token = String(form.get('cf-turnstile-response') ?? '');
   const honeypot = String(form.get('company_website') ?? ''); // hidden field, humans leave it empty
@@ -85,6 +90,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }
   if (!isEmail(email)) {
     return json({ ok: false, error: 'Please enter a valid work email.' }, 400);
+  }
+  if (!phone) {
+    return json({ ok: false, error: 'Please enter a phone number.' }, 400);
   }
   if (!token) {
     return json({ ok: false, error: 'Please complete the verification check.' }, 400);
@@ -117,7 +125,11 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   // --- Send the enquiry ---
   const submittedAt = new Date().toISOString();
   const country = request.headers.get('CF-IPCountry') ?? 'unknown';
+  const servicesText = services.length ? services.join(', ') : 'Not supplied';
   const safeEmail = escapeHtml(email);
+  const safePhone = escapeHtml(phone);
+  const safeOccupation = escapeHtml(occupation || 'Not supplied');
+  const safeServices = escapeHtml(servicesText);
   const safeNeed = escapeHtml(need || 'Not supplied');
 
   try {
@@ -133,10 +145,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         to: [env.ENQUIRY_TO],
         custom_headers: [{ header: 'Reply-To', value: email }],
         subject: `Enquiry from ${email}`,
-        text_body: `New enquiry\n\nEmail: ${email}\nNeed: ${need || 'Not supplied'}\nCountry: ${country}\nSubmitted: ${submittedAt}\n`,
+        text_body: `New enquiry\n\nEmail: ${email}\nPhone: ${phone}\nOccupation needed: ${occupation || 'Not supplied'}\nService required: ${servicesText}\nNeed: ${need || 'Not supplied'}\nCountry: ${country}\nSubmitted: ${submittedAt}\n`,
         html_body:
           `<h2 style="font-family:system-ui,sans-serif">New enquiry</h2>` +
           `<p style="font-family:system-ui,sans-serif"><strong>Email:</strong> ${safeEmail}<br>` +
+          `<strong>Phone:</strong> ${safePhone}<br>` +
+          `<strong>Occupation needed:</strong> ${safeOccupation}<br>` +
+          `<strong>Service required:</strong> ${safeServices}<br>` +
           `<strong>Need:</strong> ${safeNeed}<br>` +
           `<strong>Country:</strong> ${escapeHtml(country)}<br>` +
           `<strong>Submitted:</strong> ${submittedAt}</p>`,

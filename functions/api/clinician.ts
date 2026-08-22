@@ -33,6 +33,8 @@ interface TurnstileVerifyResponse {
 
 const MAX_EMAIL = 254;
 const MAX_MESSAGE = 2000;
+const MAX_PHONE = 30;
+const MAX_SPECIALTIES = 10;
 
 function json(body: unknown, status: number): Response {
   return new Response(JSON.stringify(body), {
@@ -76,8 +78,15 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
   const email = String(form.get('email') ?? '').trim();
   const name = String(form.get('name') ?? '').trim().slice(0, 120);
+  const phone = String(form.get('phone') ?? '').trim().slice(0, MAX_PHONE);
   const discipline = String(form.get('discipline') ?? '').trim().slice(0, 80);
   const registration = String(form.get('registration') ?? '').trim().slice(0, 60);
+  const specialtiesRaw = form.getAll('specialty[]').map((v) => String(v).trim().slice(0, 80));
+  const gradesRaw = form.getAll('grade[]').map((v) => String(v).trim().slice(0, 80));
+  const specialties = specialtiesRaw
+    .map((specialty, i) => ({ specialty, grade: gradesRaw[i] ?? '' }))
+    .filter((row) => row.specialty)
+    .slice(0, MAX_SPECIALTIES);
   const interest = String(form.get('interest') ?? '').trim().slice(0, MAX_MESSAGE);
   const token = String(form.get('cf-turnstile-response') ?? '');
   const honeypot = String(form.get('company_website') ?? ''); // hidden field, humans leave it empty
@@ -91,6 +100,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }
   if (!isEmail(email)) {
     return json({ ok: false, error: 'Please enter a valid email.' }, 400);
+  }
+  if (!phone) {
+    return json({ ok: false, error: 'Please enter a phone number.' }, 400);
   }
   if (!discipline) {
     return json({ ok: false, error: 'Please select your discipline.' }, 400);
@@ -126,8 +138,17 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   // --- Send the enquiry ---
   const submittedAt = new Date().toISOString();
   const country = request.headers.get('CF-IPCountry') ?? 'unknown';
+  const specialtiesText = specialties.length
+    ? specialties.map((row) => (row.grade ? `${row.specialty} (${row.grade})` : row.specialty)).join(', ')
+    : 'Not supplied';
+  const specialtiesHtml = specialties.length
+    ? specialties
+        .map((row) => escapeHtml(row.grade ? `${row.specialty} (${row.grade})` : row.specialty))
+        .join('<br>')
+    : 'Not supplied';
   const safeEmail = escapeHtml(email);
   const safeName = escapeHtml(name);
+  const safePhone = escapeHtml(phone);
   const safeDiscipline = escapeHtml(discipline);
   const safeRegistration = escapeHtml(registration || 'Not supplied');
   const safeInterest = escapeHtml(interest || 'Not supplied');
@@ -145,13 +166,15 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         to: [env.APPLY_TO],
         custom_headers: [{ header: 'Reply-To', value: email }],
         subject: `Clinician application: ${name} (${discipline})`,
-        text_body: `New clinician application\n\nName: ${name}\nEmail: ${email}\nDiscipline: ${discipline}\nRegistration: ${registration || 'Not supplied'}\nInterest: ${interest || 'Not supplied'}\nCountry: ${country}\nSubmitted: ${submittedAt}\n`,
+        text_body: `New clinician application\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nDiscipline: ${discipline}\nRegistration: ${registration || 'Not supplied'}\nSpecialties: ${specialtiesText}\nInterest: ${interest || 'Not supplied'}\nCountry: ${country}\nSubmitted: ${submittedAt}\n`,
         html_body:
           `<h2 style="font-family:system-ui,sans-serif">New clinician application</h2>` +
           `<p style="font-family:system-ui,sans-serif"><strong>Name:</strong> ${safeName}<br>` +
           `<strong>Email:</strong> ${safeEmail}<br>` +
+          `<strong>Phone:</strong> ${safePhone}<br>` +
           `<strong>Discipline:</strong> ${safeDiscipline}<br>` +
           `<strong>Registration:</strong> ${safeRegistration}<br>` +
+          `<strong>Specialties:</strong> ${specialtiesHtml}<br>` +
           `<strong>Interest:</strong> ${safeInterest}<br>` +
           `<strong>Country:</strong> ${escapeHtml(country)}<br>` +
           `<strong>Submitted:</strong> ${submittedAt}</p>`,
