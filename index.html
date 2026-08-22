@@ -312,9 +312,9 @@
   .form .chk-info:hover .tip,.form .chk-info:focus-visible .tip,.form .chk-info.show .tip{opacity:1}
   .form-msg.err{color:#ffb4a8}
   .form-msg.ok{color:var(--accent-2)}
-  .phone-row{display:flex;gap:8px}
-  .phone-row select{width:auto;flex:0 0 auto;min-width:112px;padding-left:12px;padding-right:8px}
-  .phone-row input{flex:1;min-width:0}
+  .form .phone-row{display:flex;gap:8px}
+  .form .phone-row select{width:128px;flex:0 0 128px;min-width:0;padding-left:12px;padding-right:6px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+  .form .phone-row input{width:auto;flex:1 1 auto;min-width:0}
   @media(max-width:640px){.form{grid-template-columns:1fr}}
   .cta .alt{margin-top:26px;font-size:14px;color:rgba(255,255,255,.6)} .cta .alt a{color:var(--accent-2);font-weight:600}
 
