@@ -132,6 +132,9 @@ h1{font-size:clamp(38px,6vw,74px);font-weight:700;letter-spacing:-.04em;margin:2
 .spec-remove{background:transparent;border:1px solid rgba(255,255,255,.18);border-radius:12px;color:rgba(255,255,255,.6);width:44px;cursor:pointer;font-size:18px;line-height:1}
 .spec-remove:hover{color:#fff;border-color:var(--accent-2)}
 .spec-add{margin-top:2px;background:none;border:none;color:var(--accent-2);font-weight:600;font-size:14px;cursor:pointer;padding:0}
+.phone-row{display:flex;gap:8px}
+.phone-row select{width:auto;flex:0 0 auto;min-width:112px;padding-left:12px;padding-right:8px}
+.phone-row input{flex:1;min-width:0}
 @media(max-width:700px){.form{grid-template-columns:1fr}}
 @media(max-width:520px){.spec-row{grid-template-columns:1fr}}
 
@@ -280,7 +283,32 @@ html.anim .up{opacity:0;transform:translateY(24px)}
         <form class="form" id="clinician-form" method="POST" action="/api/clinician" novalidate>
           <div><label class="sr" for="c-name">Full name</label><input id="c-name" name="name" type="text" placeholder="Full name" autocomplete="name" required></div>
           <div><label class="sr" for="c-email">Email</label><input id="c-email" name="email" type="email" placeholder="Email" autocomplete="email" required></div>
-          <div><label class="sr" for="c-phone">Phone number</label><input id="c-phone" name="phone" type="tel" placeholder="Phone number" autocomplete="tel" required></div>
+          <div class="phone-row">
+            <label class="sr" for="c-country">Country</label>
+            <select id="c-country" name="phone_country" aria-label="Country code">
+              <option value="61">Australia (+61)</option>
+              <option value="64">New Zealand (+64)</option>
+              <option value="44">United Kingdom (+44)</option>
+              <option value="1">United States / Canada (+1)</option>
+              <option value="353">Ireland (+353)</option>
+              <option value="65">Singapore (+65)</option>
+              <option value="852">Hong Kong (+852)</option>
+              <option value="91">India (+91)</option>
+              <option value="27">South Africa (+27)</option>
+              <option value="971">United Arab Emirates (+971)</option>
+              <option value="63">Philippines (+63)</option>
+              <option value="60">Malaysia (+60)</option>
+              <option value="62">Indonesia (+62)</option>
+              <option value="81">Japan (+81)</option>
+              <option value="86">China (+86)</option>
+              <option value="49">Germany (+49)</option>
+              <option value="33">France (+33)</option>
+              <option value="31">Netherlands (+31)</option>
+              <option value="">Other (enter with +country code)</option>
+            </select>
+            <label class="sr" for="c-phone">Phone number</label>
+            <input id="c-phone" name="phone" type="tel" placeholder="Phone number" autocomplete="tel" required>
+          </div>
           <div>
             <label class="sr" for="c-disc">Discipline</label>
             <select id="c-disc" name="discipline" required>
@@ -358,7 +386,13 @@ html.anim .up{opacity:0;transform:translateY(24px)}
   if(!form)return;
   var msg=document.querySelector('.form-msg'), btn=form.querySelector('button[type=submit]');
   function say(t,k){msg.textContent=t;msg.className='form-msg '+(k||'');msg.style.display='block';}
-  function isValidPhone(v){var d=v.replace(/[\s\-().]/g,'');return /^(\+[1-9]\d{7,14}|0\d{8,9})$/.test(d);}
+  function isValidPhone(v,cc){
+    var d=v.replace(/[\s\-().]/g,'');
+    if(d.charAt(0)==='+')return /^\+[1-9]\d{7,14}$/.test(d);
+    if(!cc)return false;
+    d=d.replace(/^0+/,'');
+    return /^\+[1-9]\d{7,14}$/.test('+'+cc+d);
+  }
   // dynamic specialty + grade rows
   var specRows=form.querySelector('#spec-rows'), specAdd=form.querySelector('#spec-add'), specN=1;
   if(specRows&&specAdd){
@@ -379,10 +413,10 @@ html.anim .up{opacity:0;transform:translateY(24px)}
   }
   form.addEventListener('submit',function(e){
     e.preventDefault();
-    var name=form.querySelector('#c-name'),email=form.querySelector('#c-email'),phone=form.querySelector('#c-phone'),disc=form.querySelector('#c-disc');
+    var name=form.querySelector('#c-name'),email=form.querySelector('#c-email'),phone=form.querySelector('#c-phone'),country=form.querySelector('#c-country'),disc=form.querySelector('#c-disc');
     if(!name.value.trim()){say('Please enter your name.','err');name.focus();return;}
     if(!email.checkValidity()){say('Please enter a valid email.','err');email.focus();return;}
-    if(!isValidPhone(phone.value)){say('Please enter a valid phone number, e.g. 0400 123 456 or +61 400 123 456.','err');phone.focus();return;}
+    if(!isValidPhone(phone.value,country.value)){say('Please enter a valid phone number, e.g. 0400 123 456, or include your country code (+61 400 123 456).','err');phone.focus();return;}
     if(!disc.value){say('Please select your discipline.','err');disc.focus();return;}
     btn.disabled=true;var lab=btn.textContent;btn.textContent='Sending...';
     fetch('/api/clinician',{method:'POST',body:new FormData(form)})

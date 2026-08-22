@@ -51,10 +51,20 @@ function isEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && value.length <= MAX_EMAIL;
 }
 
-/** Accepts E.164 (+countrycode...) or a local AU-style number starting with 0. */
-function isValidPhone(value: string): boolean {
-  const digits = value.replace(/[\s\-().]/g, '');
-  return /^(\+[1-9]\d{7,14}|0\d{8,9})$/.test(digits);
+/**
+ * Accepts a full E.164 number (starts with +), or a local number combined
+ * with the selected country's calling code. Returns the normalised E.164
+ * form on success so the email always shows a callable number.
+ */
+function normalizePhone(value: string, countryCode: string): string | null {
+  let digits = value.replace(/[\s\-().]/g, '');
+  if (digits.charAt(0) === '+') {
+    return /^\+[1-9]\d{7,14}$/.test(digits) ? digits : null;
+  }
+  if (!countryCode) return null;
+  digits = digits.replace(/^0+/, '');
+  const candidate = `+${countryCode}${digits}`;
+  return /^\+[1-9]\d{7,14}$/.test(candidate) ? candidate : null;
 }
 
 function escapeHtml(input: string): string {
@@ -84,7 +94,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
   const email = String(form.get('email') ?? '').trim();
   const name = String(form.get('name') ?? '').trim().slice(0, 120);
-  const phone = String(form.get('phone') ?? '').trim().slice(0, MAX_PHONE);
+  const phoneRaw = String(form.get('phone') ?? '').trim().slice(0, MAX_PHONE);
+  const phoneCountry = String(form.get('phone_country') ?? '').trim().replace(/\D/g, '').slice(0, 4);
   const discipline = String(form.get('discipline') ?? '').trim().slice(0, 80);
   const registration = String(form.get('registration') ?? '').trim().slice(0, 60);
   const specialtiesRaw = form.getAll('specialty[]').map((v) => String(v).trim().slice(0, 80));
@@ -107,7 +118,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   if (!isEmail(email)) {
     return json({ ok: false, error: 'Please enter a valid email.' }, 400);
   }
-  if (!isValidPhone(phone)) {
+  const phone = normalizePhone(phoneRaw, phoneCountry);
+  if (!phone) {
     return json({ ok: false, error: 'Please enter a valid phone number.' }, 400);
   }
   if (!discipline) {
