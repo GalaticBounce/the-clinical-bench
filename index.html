@@ -306,7 +306,7 @@
   .foot .b{font-weight:700;font-size:22px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
   .foot .b .mk{width:22px;height:22px}
   .foot .tg{color:var(--muted);font-size:15px;margin-top:14px;max-width:34ch}
-  .foot h4{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+  .foot h3{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
   .foot a{display:block;color:var(--ink);font-size:15px;padding:9px 0;min-height:34px;opacity:.8} .foot a:hover{opacity:1;color:var(--accent)}
   .foot-b{max-width:var(--maxw);margin:44px auto 0;padding:22px var(--mx) 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:13px}
   .foot-b .cmp{max-width:56ch}
@@ -441,8 +441,8 @@
     <div class="comm-wrap up">
       <figure class="comm">
         <picture>
-          <source type="image/webp" srcset="/assets/img/atrium-480.webp 480w, /assets/img/atrium-768.webp 768w, /assets/img/atrium-1280.webp 1280w, /assets/img/atrium-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 1200px">
-          <img src="/assets/img/atrium-768.jpg" srcset="/assets/img/atrium-480.jpg 480w, /assets/img/atrium-768.jpg 768w, /assets/img/atrium-1280.jpg 1280w, /assets/img/atrium-1600.jpg 1600w" sizes="(max-width: 900px) 100vw, 1200px" width="2752" height="1536" loading="lazy" decoding="async" alt="Doctors, nurses, allied health professionals, medical coders and practice administrators talking together in a hospital atrium">
+          <source type="image/webp" srcset="/assets/img/atrium-480.webp 480w, /assets/img/atrium-700.webp 700w, /assets/img/atrium-768.webp 768w, /assets/img/atrium-1280.webp 1280w, /assets/img/atrium-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 1200px">
+          <img src="/assets/img/atrium-768.jpg" srcset="/assets/img/atrium-480.jpg 480w, /assets/img/atrium-700.jpg 700w, /assets/img/atrium-768.jpg 768w, /assets/img/atrium-1280.jpg 1280w, /assets/img/atrium-1600.jpg 1600w" sizes="(max-width: 900px) 100vw, 1200px" width="2752" height="1536" loading="lazy" decoding="async" alt="Doctors, nurses, allied health professionals, medical coders and practice administrators talking together in a hospital atrium">
         </picture>
       </figure>
     </div>
@@ -529,16 +529,16 @@
   <div class="foot">
     <div><div class="b"><svg class="mk" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="#1E7A5A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 4.4H6.6a2 2 0 0 0-2 2v11.2a2 2 0 0 0 2 2h1.6"/><path d="M15.8 4.4h1.6a2 2 0 0 1 2 2v11.2a2 2 0 0 1-2 2h-1.6"/></g><circle cx="12" cy="9.9" r="3" fill="#2E9D74"/><path d="M7.3 18.2a4.7 4.7 0 0 1 9.4 0Z" fill="#2E9D74"/></svg> Clinical Bench</div>
       <p class="tg">On-demand access to doctors, nurses and allied health, for teams building in healthcare.</p></div>
-    <div><h4>Explore</h4><a href="#commission">Commission</a><a href="#edge">Why us</a><a href="#faq">FAQ</a><a href="/clinicians/">For clinicians</a><a href="#contact">Enquire</a></div>
-    <div><h4>Clinical Bench</h4><a href="#">Australia</a><a href="/privacy/">Privacy</a><a href="#">Terms</a></div>
+    <div><h3>Explore</h3><a href="#commission">Commission</a><a href="#edge">Why us</a><a href="#faq">FAQ</a><a href="/clinicians/">For clinicians</a><a href="#contact">Enquire</a></div>
+    <div><h3>Clinical Bench</h3><a href="#">Australia</a><a href="/privacy/">Privacy</a><a href="#">Terms</a></div>
   </div>
   <div class="foot-b"><span class="cmp">Supplies clinicians for commercial engagements. Not a clinical service. Nothing here is a public endorsement of any product.</span><span>© 2026 · Working identity</span></div>
 </footer>
 
-<script src="/assets/js/gsap.min.js"></script>
-<script src="/assets/js/ScrollTrigger.min.js"></script>
-<script src="/assets/js/lenis.min.js"></script>
-<script>
+<script defer src="/assets/js/gsap.min.js"></script>
+<script defer src="/assets/js/ScrollTrigger.min.js"></script>
+<script defer src="/assets/js/lenis.min.js"></script>
+<script defer>
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
