@@ -126,13 +126,19 @@ h1{font-size:clamp(38px,6vw,74px);font-weight:700;letter-spacing:-.04em;margin:2
 .apply .fine a{color:var(--accent-2);font-weight:600;text-decoration:underline}
 .form-msg{margin-top:16px;font-size:14px;display:none}
 .form-msg.err{color:#ffb4a8}.form-msg.ok{color:var(--accent-2)}
+.form input.err,.form select.err,.form textarea.err{border-color:#ff6b6b;background:rgba(255,107,107,.08)}
+.form fieldset.err{border-color:#ff6b6b}
+.form .err-msg{display:none;align-items:center;gap:6px;color:#ffb4a8;font-size:12.5px;margin-top:6px;text-align:left}
+.form .err-msg::before{content:"\26A0";font-size:12px;line-height:1}
+.form .err-msg:empty{display:none}
+.form .phone-row .err-msg{flex:0 0 100%;order:3;margin-top:0}
 .spec-label{display:block;font-size:13px;color:rgba(255,255,255,.6);margin-bottom:8px}
 .spec-row{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;margin-bottom:10px}
 .spec-row input{margin:0}
 .spec-remove{background:transparent;border:1px solid rgba(255,255,255,.18);border-radius:12px;color:rgba(255,255,255,.6);width:44px;cursor:pointer;font-size:18px;line-height:1}
 .spec-remove:hover{color:#fff;border-color:var(--accent-2)}
 .spec-add{margin-top:2px;background:none;border:none;color:var(--accent-2);font-weight:600;font-size:14px;cursor:pointer;padding:0}
-.form .phone-row{display:flex;gap:8px}
+.form .phone-row{display:flex;flex-wrap:wrap;gap:8px}
 .form .phone-row select{width:92px;flex:0 0 92px;min-width:0;padding-left:12px;padding-right:6px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
 .form .phone-row input{width:auto;flex:1 1 auto;min-width:0}
 @media(max-width:700px){.form{grid-template-columns:1fr}}
@@ -281,33 +287,34 @@ html.anim .up{opacity:0;transform:translateY(24px)}
         <h2 style="margin-top:14px">Join the bench.</h2>
         <p class="lead">A few details is enough to start. We will come back with what fits and what it pays.</p>
         <form class="form" id="clinician-form" method="POST" action="/api/clinician" novalidate>
-          <div><label class="sr" for="c-name">Full name</label><input id="c-name" name="name" type="text" placeholder="Full name" autocomplete="name" required></div>
-          <div><label class="sr" for="c-email">Email</label><input id="c-email" name="email" type="email" placeholder="Email" autocomplete="email" required></div>
+          <div><label class="sr" for="c-name">Full name</label><input id="c-name" name="name" type="text" placeholder="Full name" autocomplete="name" required><span class="err-msg" id="c-name-msg" role="alert"></span></div>
+          <div><label class="sr" for="c-email">Email</label><input id="c-email" name="email" type="email" placeholder="Email" autocomplete="email" required><span class="err-msg" id="c-email-msg" role="alert"></span></div>
           <div class="phone-row">
             <label class="sr" for="c-country">Country</label>
             <select id="c-country" name="phone_country" aria-label="Country code">
-              <option value="61" title="Australia">🇦🇺 +61</option>
-              <option value="64" title="New Zealand">🇳🇿 +64</option>
-              <option value="44" title="United Kingdom">🇬🇧 +44</option>
-              <option value="1" title="United States / Canada">🇺🇸 +1</option>
-              <option value="353" title="Ireland">🇮🇪 +353</option>
-              <option value="65" title="Singapore">🇸🇬 +65</option>
-              <option value="852" title="Hong Kong">🇭🇰 +852</option>
-              <option value="91" title="India">🇮🇳 +91</option>
-              <option value="27" title="South Africa">🇿🇦 +27</option>
-              <option value="971" title="United Arab Emirates">🇦🇪 +971</option>
-              <option value="63" title="Philippines">🇵🇭 +63</option>
-              <option value="60" title="Malaysia">🇲🇾 +60</option>
-              <option value="62" title="Indonesia">🇮🇩 +62</option>
-              <option value="81" title="Japan">🇯🇵 +81</option>
-              <option value="86" title="China">🇨🇳 +86</option>
-              <option value="49" title="Germany">🇩🇪 +49</option>
-              <option value="33" title="France">🇫🇷 +33</option>
-              <option value="31" title="Netherlands">🇳🇱 +31</option>
+              <option value="AU" data-cc="61" title="Australia">🇦🇺 +61</option>
+              <option value="NZ" data-cc="64" title="New Zealand">🇳🇿 +64</option>
+              <option value="GB" data-cc="44" title="United Kingdom">🇬🇧 +44</option>
+              <option value="US" data-cc="1" title="United States / Canada">🇺🇸 +1</option>
+              <option value="IE" data-cc="353" title="Ireland">🇮🇪 +353</option>
+              <option value="SG" data-cc="65" title="Singapore">🇸🇬 +65</option>
+              <option value="HK" data-cc="852" title="Hong Kong">🇭🇰 +852</option>
+              <option value="IN" data-cc="91" title="India">🇮🇳 +91</option>
+              <option value="ZA" data-cc="27" title="South Africa">🇿🇦 +27</option>
+              <option value="AE" data-cc="971" title="United Arab Emirates">🇦🇪 +971</option>
+              <option value="PH" data-cc="63" title="Philippines">🇵🇭 +63</option>
+              <option value="MY" data-cc="60" title="Malaysia">🇲🇾 +60</option>
+              <option value="ID" data-cc="62" title="Indonesia">🇮🇩 +62</option>
+              <option value="JP" data-cc="81" title="Japan">🇯🇵 +81</option>
+              <option value="CN" data-cc="86" title="China">🇨🇳 +86</option>
+              <option value="DE" data-cc="49" title="Germany">🇩🇪 +49</option>
+              <option value="FR" data-cc="33" title="France">🇫🇷 +33</option>
+              <option value="NL" data-cc="31" title="Netherlands">🇳🇱 +31</option>
               <option value="" title="Other country">🌐 Other</option>
             </select>
             <label class="sr" for="c-phone">Phone number</label>
             <input id="c-phone" name="phone" type="tel" placeholder="Phone number" autocomplete="tel" required>
+            <span class="err-msg" id="c-phone-msg" role="alert"></span>
           </div>
           <div>
             <label class="sr" for="c-disc">Discipline</label>
@@ -322,6 +329,7 @@ html.anim .up{opacity:0;transform:translateY(24px)}
               <option>Medical coder</option><option>Practice manager or administrator</option>
               <option>Other allied health</option>
             </select>
+            <span class="err-msg" id="c-disc-msg" role="alert"></span>
           </div>
           <div><label class="sr" for="c-reg">Registration number</label><input id="c-reg" name="registration" type="text" placeholder="AHPRA or professional body number"></div>
           <div class="full">
@@ -364,6 +372,8 @@ html.anim .up{opacity:0;transform:translateY(24px)}
 </footer>
 
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script defer src="/assets/js/libphonenumber-min.js"></script>
+<script defer src="/assets/js/form-utils.js"></script>
 <script>
 (function(){
   window.__ok=true;
@@ -386,13 +396,17 @@ html.anim .up{opacity:0;transform:translateY(24px)}
   if(!form)return;
   var msg=document.querySelector('.form-msg'), btn=form.querySelector('button[type=submit]');
   function say(t,k){msg.textContent=t;msg.className='form-msg '+(k||'');msg.style.display='block';}
-  function isValidPhone(v,cc){
-    var d=v.replace(/[\s\-().]/g,'');
-    if(d.charAt(0)==='+')return /^\+[1-9]\d{7,14}$/.test(d);
-    if(!cc)return false;
-    d=d.replace(/^0+/,'');
-    return /^\+[1-9]\d{7,14}$/.test('+'+cc+d);
-  }
+  var name=form.querySelector('#c-name'),email=form.querySelector('#c-email'),phone=form.querySelector('#c-phone'),country=form.querySelector('#c-country'),disc=form.querySelector('#c-disc');
+  // CBForm/libphonenumber load with `defer`, so they may not exist yet on this
+  // synchronous script; the setup below only needs them once the page is idle.
+  document.addEventListener('DOMContentLoaded',function(){
+    CBForm.attachCountryTypeahead(country);
+    CBForm.clearOnEdit(name,'c-name-msg');
+    CBForm.clearOnEdit(email,'c-email-msg');
+    CBForm.clearOnEdit(phone,'c-phone-msg');
+    CBForm.clearOnEdit(disc,'c-disc-msg');
+    country.addEventListener('change',function(){CBForm.clearFieldError(phone,'c-phone-msg');});
+  });
   // dynamic specialty + grade rows
   var specRows=form.querySelector('#spec-rows'), specAdd=form.querySelector('#spec-add'), specN=1;
   if(specRows&&specAdd){
@@ -413,11 +427,16 @@ html.anim .up{opacity:0;transform:translateY(24px)}
   }
   form.addEventListener('submit',function(e){
     e.preventDefault();
-    var name=form.querySelector('#c-name'),email=form.querySelector('#c-email'),phone=form.querySelector('#c-phone'),country=form.querySelector('#c-country'),disc=form.querySelector('#c-disc');
-    if(!name.value.trim()){say('Please enter your name.','err');name.focus();return;}
-    if(!email.checkValidity()){say('Please enter a valid email.','err');email.focus();return;}
-    if(!isValidPhone(phone.value,country.value)){say('Please enter a valid phone number, e.g. 0400 123 456, or include your country code (+61 400 123 456).','err');phone.focus();return;}
-    if(!disc.value){say('Please select your discipline.','err');disc.focus();return;}
+    var errors=[];
+    if(!name.value.trim()){CBForm.setFieldError(name,'c-name-msg','Please enter your name.');errors.push(name);}
+    if(!email.value||!email.checkValidity()){CBForm.setFieldError(email,'c-email-msg','Please enter a valid email.');errors.push(email);}
+    if(!CBForm.isValidPhone(phone.value,country.value)){CBForm.setFieldError(phone,'c-phone-msg','Please enter a valid phone number for the selected country, or include a full +country code.');errors.push(phone);}
+    if(!disc.value){CBForm.setFieldError(disc,'c-disc-msg','Please select your discipline.');errors.push(disc);}
+    if(errors.length){
+      say('Please fix the highlighted field'+(errors.length>1?'s':'')+' below.','err');
+      errors[0].focus();
+      return;
+    }
     btn.disabled=true;var lab=btn.textContent;btn.textContent='Sending...';
     fetch('/api/clinician',{method:'POST',body:new FormData(form)})
       .then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d}})})

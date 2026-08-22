@@ -15,6 +15,8 @@
  *   SMTP2GO send email API:           https://apidoc.smtp2go.com/documentation/#/POST/email/send
  */
 
+import { parsePhoneNumberFromString, type CountryCode } from 'libphonenumber-js/min';
+
 interface Env {
   TURNSTILE_SECRET_KEY: string;
   SMTP2GO_API_KEY: string;
@@ -53,18 +55,21 @@ function isEmail(value: string): boolean {
 
 /**
  * Accepts a full E.164 number (starts with +), or a local number combined
- * with the selected country's calling code. Returns the normalised E.164
- * form on success so the email always shows a callable number.
+ * with the selected country's ISO 3166-1 alpha-2 code (e.g. "AU"). Validated
+ * against real per-country numbering rules via libphonenumber-js, not just a
+ * digit-count guess. Returns the normalised E.164 form on success.
  */
-function normalizePhone(value: string, countryCode: string): string | null {
-  let digits = value.replace(/[\s\-().]/g, '');
-  if (digits.charAt(0) === '+') {
-    return /^\+[1-9]\d{7,14}$/.test(digits) ? digits : null;
+function normalizePhone(value: string, countryIso: string): string | null {
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+  try {
+    const iso = trimmed.charAt(0) === '+' ? undefined : (countryIso as CountryCode);
+    if (!trimmed.startsWith('+') && !countryIso) return null;
+    const parsed = parsePhoneNumberFromString(trimmed, iso);
+    return parsed && parsed.isValid() ? parsed.number : null;
+  } catch {
+    return null;
   }
-  if (!countryCode) return null;
-  digits = digits.replace(/^0+/, '');
-  const candidate = `+${countryCode}${digits}`;
-  return /^\+[1-9]\d{7,14}$/.test(candidate) ? candidate : null;
 }
 
 function escapeHtml(input: string): string {
@@ -94,7 +99,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
   const email = String(form.get('email') ?? '').trim();
   const phoneRaw = String(form.get('phone') ?? '').trim().slice(0, MAX_PHONE);
-  const phoneCountry = String(form.get('phone_country') ?? '').trim().replace(/\D/g, '').slice(0, 4);
+  const phoneCountry = String(form.get('phone_country') ?? '').trim().toUpperCase().slice(0, 2);
   const occupation = String(form.get('occupation') ?? '').trim().slice(0, 80);
   const services = form.getAll('services').map((v) => String(v).trim().slice(0, 80)).filter(Boolean).slice(0, MAX_SERVICES);
   const need = String(form.get('need') ?? '').trim().slice(0, MAX_MESSAGE);

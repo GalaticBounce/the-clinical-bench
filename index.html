@@ -312,9 +312,15 @@
   .form .chk-info:hover .tip,.form .chk-info:focus-visible .tip,.form .chk-info.show .tip{opacity:1}
   .form-msg.err{color:#ffb4a8}
   .form-msg.ok{color:var(--accent-2)}
-  .form .phone-row{display:flex;gap:8px}
+  .form .phone-row{display:flex;flex-wrap:wrap;gap:8px}
   .form .phone-row select{width:92px;flex:0 0 92px;min-width:0;padding-left:12px;padding-right:6px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
   .form .phone-row input{width:auto;flex:1 1 auto;min-width:0}
+  .form input.err,.form select.err,.form textarea.err{border-color:#ff6b6b;background:rgba(255,107,107,.08)}
+  .form fieldset.err{border-color:#ff6b6b}
+  .form .err-msg{display:none;align-items:center;gap:6px;color:#ffb4a8;font-size:12.5px;margin-top:6px;text-align:left}
+  .form .err-msg::before{content:"\26A0";font-size:12px;line-height:1}
+  .form .err-msg:empty{display:none}
+  .form .phone-row .err-msg{flex:0 0 100%;order:3;margin-top:0}
   @media(max-width:640px){.form{grid-template-columns:1fr}}
   .cta .alt{margin-top:26px;font-size:14px;color:rgba(255,255,255,.6)} .cta .alt a{color:var(--accent-2);font-weight:600}
 
@@ -526,32 +532,33 @@
         <h2 class="type" style="margin-top:16px">Tell us what you’re <span class="accent">building.</span></h2>
         <p>A short brief is enough. We’ll come back with who fits and how we’d run it.</p>
         <form class="form" id="enquiry-form" method="POST" action="/api/enquiry" novalidate>
-          <div><label class="sr" for="f-email">Work email</label><input id="f-email" name="email" type="email" placeholder="Work email" autocomplete="email" required></div>
+          <div><label class="sr" for="f-email">Work email</label><input id="f-email" name="email" type="email" placeholder="Work email" autocomplete="email" required><span class="err-msg" id="f-email-msg" role="alert"></span></div>
           <div class="phone-row">
             <label class="sr" for="f-country">Country</label>
             <select id="f-country" name="phone_country" aria-label="Country code">
-              <option value="61" title="Australia">🇦🇺 +61</option>
-              <option value="64" title="New Zealand">🇳🇿 +64</option>
-              <option value="44" title="United Kingdom">🇬🇧 +44</option>
-              <option value="1" title="United States / Canada">🇺🇸 +1</option>
-              <option value="353" title="Ireland">🇮🇪 +353</option>
-              <option value="65" title="Singapore">🇸🇬 +65</option>
-              <option value="852" title="Hong Kong">🇭🇰 +852</option>
-              <option value="91" title="India">🇮🇳 +91</option>
-              <option value="27" title="South Africa">🇿🇦 +27</option>
-              <option value="971" title="United Arab Emirates">🇦🇪 +971</option>
-              <option value="63" title="Philippines">🇵🇭 +63</option>
-              <option value="60" title="Malaysia">🇲🇾 +60</option>
-              <option value="62" title="Indonesia">🇮🇩 +62</option>
-              <option value="81" title="Japan">🇯🇵 +81</option>
-              <option value="86" title="China">🇨🇳 +86</option>
-              <option value="49" title="Germany">🇩🇪 +49</option>
-              <option value="33" title="France">🇫🇷 +33</option>
-              <option value="31" title="Netherlands">🇳🇱 +31</option>
+              <option value="AU" data-cc="61" title="Australia">🇦🇺 +61</option>
+              <option value="NZ" data-cc="64" title="New Zealand">🇳🇿 +64</option>
+              <option value="GB" data-cc="44" title="United Kingdom">🇬🇧 +44</option>
+              <option value="US" data-cc="1" title="United States / Canada">🇺🇸 +1</option>
+              <option value="IE" data-cc="353" title="Ireland">🇮🇪 +353</option>
+              <option value="SG" data-cc="65" title="Singapore">🇸🇬 +65</option>
+              <option value="HK" data-cc="852" title="Hong Kong">🇭🇰 +852</option>
+              <option value="IN" data-cc="91" title="India">🇮🇳 +91</option>
+              <option value="ZA" data-cc="27" title="South Africa">🇿🇦 +27</option>
+              <option value="AE" data-cc="971" title="United Arab Emirates">🇦🇪 +971</option>
+              <option value="PH" data-cc="63" title="Philippines">🇵🇭 +63</option>
+              <option value="MY" data-cc="60" title="Malaysia">🇲🇾 +60</option>
+              <option value="ID" data-cc="62" title="Indonesia">🇮🇩 +62</option>
+              <option value="JP" data-cc="81" title="Japan">🇯🇵 +81</option>
+              <option value="CN" data-cc="86" title="China">🇨🇳 +86</option>
+              <option value="DE" data-cc="49" title="Germany">🇩🇪 +49</option>
+              <option value="FR" data-cc="33" title="France">🇫🇷 +33</option>
+              <option value="NL" data-cc="31" title="Netherlands">🇳🇱 +31</option>
               <option value="" title="Other country">🌐 Other</option>
             </select>
             <label class="sr" for="f-phone">Phone number</label>
             <input id="f-phone" name="phone" type="tel" placeholder="Phone number" autocomplete="tel" required>
+            <span class="err-msg" id="f-phone-msg" role="alert"></span>
           </div>
           <div class="full">
             <label class="sr" for="f-occ">Occupation needed</label>
@@ -604,6 +611,8 @@
 <script defer src="/assets/js/gsap.min.js"></script>
 <script defer src="/assets/js/ScrollTrigger.min.js"></script>
 <script defer src="/assets/js/lenis.min.js"></script>
+<script defer src="/assets/js/libphonenumber-min.js"></script>
+<script defer src="/assets/js/form-utils.js"></script>
 <script defer>
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -806,6 +815,7 @@
 </script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
+document.addEventListener('DOMContentLoaded',function(){
 (function(){
   var form=document.getElementById('enquiry-form');
   if(!form)return;
@@ -824,19 +834,29 @@
   document.addEventListener('click',function(e){
     if(!e.target.closest('.chk-info')){form.querySelectorAll('.chk-info.show').forEach(function(b){b.classList.remove('show');});}
   });
-  function isValidPhone(v,cc){
-    var d=v.replace(/[\s\-().]/g,'');
-    if(d.charAt(0)==='+')return /^\+[1-9]\d{7,14}$/.test(d);
-    if(!cc)return false;
-    d=d.replace(/^0+/,'');
-    return /^\+[1-9]\d{7,14}$/.test('+'+cc+d);
-  }
+
+  var email=form.querySelector('#f-email'),phone=form.querySelector('#f-phone'),country=form.querySelector('#f-country');
+  CBForm.attachCountryTypeahead(country);
+  CBForm.clearOnEdit(email,'f-email-msg');
+  CBForm.clearOnEdit(phone,'f-phone-msg');
+  country.addEventListener('change',function(){CBForm.clearFieldError(phone,'f-phone-msg');});
+
   form.addEventListener('submit',function(e){
     e.preventDefault();
-    var email=form.querySelector('#f-email');
-    if(!email.value||!email.checkValidity()){say('Please enter a valid work email.','err');email.focus();return;}
-    var phone=form.querySelector('#f-phone'),country=form.querySelector('#f-country');
-    if(!isValidPhone(phone.value,country.value)){say('Please enter a valid phone number, e.g. 0400 123 456, or include your country code (+61 400 123 456).','err');phone.focus();return;}
+    var errors=[];
+    if(!email.value||!email.checkValidity()){
+      CBForm.setFieldError(email,'f-email-msg','Please enter a valid work email.');
+      errors.push(email);
+    }
+    if(!CBForm.isValidPhone(phone.value,country.value)){
+      CBForm.setFieldError(phone,'f-phone-msg','Please enter a valid phone number for the selected country, or include a full +country code.');
+      errors.push(phone);
+    }
+    if(errors.length){
+      say('Please fix the highlighted field'+(errors.length>1?'s':'')+' below.','err');
+      errors[0].focus();
+      return;
+    }
     btn.disabled=true; var label=btn.textContent; btn.textContent='Sending...';
     fetch('/api/enquiry',{method:'POST',body:new FormData(form)})
       .then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
@@ -853,6 +873,7 @@
       .finally(function(){btn.disabled=false;btn.textContent=label;});
   });
 })();
+});
 </script>
 <!-- Cloudflare Web Analytics (cookieless).
      Easiest path: Cloudflare dashboard > Web Analytics > add this site, and let it
