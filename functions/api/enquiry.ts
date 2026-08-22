@@ -51,6 +51,12 @@ function isEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && value.length <= MAX_EMAIL;
 }
 
+/** Accepts E.164 (+countrycode...) or a local AU-style number starting with 0. */
+function isValidPhone(value: string): boolean {
+  const digits = value.replace(/[\s\-().]/g, '');
+  return /^(\+[1-9]\d{7,14}|0\d{8,9})$/.test(digits);
+}
+
 function escapeHtml(input: string): string {
   return input
     .replace(/&/g, '&amp;')
@@ -91,8 +97,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   if (!isEmail(email)) {
     return json({ ok: false, error: 'Please enter a valid work email.' }, 400);
   }
-  if (!phone) {
-    return json({ ok: false, error: 'Please enter a phone number.' }, 400);
+  if (!isValidPhone(phone)) {
+    return json({ ok: false, error: 'Please enter a valid phone number.' }, 400);
   }
   if (!token) {
     return json({ ok: false, error: 'Please complete the verification check.' }, 400);

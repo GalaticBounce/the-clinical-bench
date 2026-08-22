@@ -358,6 +358,7 @@ html.anim .up{opacity:0;transform:translateY(24px)}
   if(!form)return;
   var msg=document.querySelector('.form-msg'), btn=form.querySelector('button[type=submit]');
   function say(t,k){msg.textContent=t;msg.className='form-msg '+(k||'');msg.style.display='block';}
+  function isValidPhone(v){var d=v.replace(/[\s\-().]/g,'');return /^(\+[1-9]\d{7,14}|0\d{8,9})$/.test(d);}
   // dynamic specialty + grade rows
   var specRows=form.querySelector('#spec-rows'), specAdd=form.querySelector('#spec-add'), specN=1;
   if(specRows&&specAdd){
@@ -381,7 +382,7 @@ html.anim .up{opacity:0;transform:translateY(24px)}
     var name=form.querySelector('#c-name'),email=form.querySelector('#c-email'),phone=form.querySelector('#c-phone'),disc=form.querySelector('#c-disc');
     if(!name.value.trim()){say('Please enter your name.','err');name.focus();return;}
     if(!email.checkValidity()){say('Please enter a valid email.','err');email.focus();return;}
-    if(!phone.value.trim()){say('Please enter a phone number.','err');phone.focus();return;}
+    if(!isValidPhone(phone.value)){say('Please enter a valid phone number, e.g. 0400 123 456 or +61 400 123 456.','err');phone.focus();return;}
     if(!disc.value){say('Please select your discipline.','err');disc.focus();return;}
     btn.disabled=true;var lab=btn.textContent;btn.textContent='Sending...';
     fetch('/api/clinician',{method:'POST',body:new FormData(form)})

@@ -781,12 +781,13 @@
   var msg=document.querySelector('.form-msg');
   var btn=form.querySelector('button[type=submit]');
   function say(text,kind){msg.textContent=text;msg.className='fine form-msg '+(kind||'');msg.style.display='block';}
+  function isValidPhone(v){var d=v.replace(/[\s\-().]/g,'');return /^(\+[1-9]\d{7,14}|0\d{8,9})$/.test(d);}
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var email=form.querySelector('#f-email');
     if(!email.value||!email.checkValidity()){say('Please enter a valid work email.','err');email.focus();return;}
     var phone=form.querySelector('#f-phone');
-    if(!phone.value.trim()){say('Please enter a phone number.','err');phone.focus();return;}
+    if(!isValidPhone(phone.value)){say('Please enter a valid phone number, e.g. 0400 123 456 or +61 400 123 456.','err');phone.focus();return;}
     btn.disabled=true; var label=btn.textContent; btn.textContent='Sending...';
     fetch('/api/enquiry',{method:'POST',body:new FormData(form)})
       .then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
