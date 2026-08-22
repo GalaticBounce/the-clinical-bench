@@ -313,7 +313,7 @@
   .form-msg.err{color:#ffb4a8}
   .form-msg.ok{color:var(--accent-2)}
   .form .phone-row{display:flex;gap:8px}
-  .form .phone-row select{width:128px;flex:0 0 128px;min-width:0;padding-left:12px;padding-right:6px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+  .form .phone-row select{width:92px;flex:0 0 92px;min-width:0;padding-left:12px;padding-right:6px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
   .form .phone-row input{width:auto;flex:1 1 auto;min-width:0}
   @media(max-width:640px){.form{grid-template-columns:1fr}}
   .cta .alt{margin-top:26px;font-size:14px;color:rgba(255,255,255,.6)} .cta .alt a{color:var(--accent-2);font-weight:600}
@@ -530,25 +530,25 @@
           <div class="phone-row">
             <label class="sr" for="f-country">Country</label>
             <select id="f-country" name="phone_country" aria-label="Country code">
-              <option value="61">🇦🇺 Australia +61</option>
-              <option value="64">🇳🇿 New Zealand +64</option>
-              <option value="44">🇬🇧 United Kingdom +44</option>
-              <option value="1">🇺🇸 US / Canada +1</option>
-              <option value="353">🇮🇪 Ireland +353</option>
-              <option value="65">🇸🇬 Singapore +65</option>
-              <option value="852">🇭🇰 Hong Kong +852</option>
-              <option value="91">🇮🇳 India +91</option>
-              <option value="27">🇿🇦 South Africa +27</option>
-              <option value="971">🇦🇪 UAE +971</option>
-              <option value="63">🇵🇭 Philippines +63</option>
-              <option value="60">🇲🇾 Malaysia +60</option>
-              <option value="62">🇮🇩 Indonesia +62</option>
-              <option value="81">🇯🇵 Japan +81</option>
-              <option value="86">🇨🇳 China +86</option>
-              <option value="49">🇩🇪 Germany +49</option>
-              <option value="33">🇫🇷 France +33</option>
-              <option value="31">🇳🇱 Netherlands +31</option>
-              <option value="">🌐 Other (+code)</option>
+              <option value="61" title="Australia">🇦🇺 +61</option>
+              <option value="64" title="New Zealand">🇳🇿 +64</option>
+              <option value="44" title="United Kingdom">🇬🇧 +44</option>
+              <option value="1" title="United States / Canada">🇺🇸 +1</option>
+              <option value="353" title="Ireland">🇮🇪 +353</option>
+              <option value="65" title="Singapore">🇸🇬 +65</option>
+              <option value="852" title="Hong Kong">🇭🇰 +852</option>
+              <option value="91" title="India">🇮🇳 +91</option>
+              <option value="27" title="South Africa">🇿🇦 +27</option>
+              <option value="971" title="United Arab Emirates">🇦🇪 +971</option>
+              <option value="63" title="Philippines">🇵🇭 +63</option>
+              <option value="60" title="Malaysia">🇲🇾 +60</option>
+              <option value="62" title="Indonesia">🇮🇩 +62</option>
+              <option value="81" title="Japan">🇯🇵 +81</option>
+              <option value="86" title="China">🇨🇳 +86</option>
+              <option value="49" title="Germany">🇩🇪 +49</option>
+              <option value="33" title="France">🇫🇷 +33</option>
+              <option value="31" title="Netherlands">🇳🇱 +31</option>
+              <option value="" title="Other country">🌐 Other</option>
             </select>
             <label class="sr" for="f-phone">Phone number</label>
             <input id="f-phone" name="phone" type="tel" placeholder="Phone number" autocomplete="tel" required>
