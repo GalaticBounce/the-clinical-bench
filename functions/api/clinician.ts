@@ -2,24 +2,28 @@
  * POST /api/clinician
  *
  * Handles the Clinical Bench clinician application form.
- * Flow: validate input -> verify Cloudflare Turnstile -> send email via Resend.
+ * Flow: validate input -> verify Cloudflare Turnstile -> send email via SMTP2GO.
  *
  * Required Pages environment variables (Settings > Environment variables):
  *   TURNSTILE_SECRET_KEY  (secret) - from Cloudflare Turnstile
- *   RESEND_API_KEY        (secret) - from Resend, "Sending access" only
+ *   SMTP2GO_API_KEY       (secret) - from SMTP2GO, sending-only API key
  *   APPLY_TO            (plain)  - inbox that receives enquiries
  *   APPLY_FROM          (plain)  - verified sender, e.g. website@theclinicalbench.com
  *
  * Docs:
  *   Turnstile server-side validation: https://developers.cloudflare.com/turnstile/get-started/server-side-validation/
- *   Resend send email API:            https://resend.com/docs/api-reference/emails/send-email
+ *   SMTP2GO send email API:           https://apidoc.smtp2go.com/documentation/#/POST/email/send
  */
 
 interface Env {
   TURNSTILE_SECRET_KEY: string;
-  RESEND_API_KEY: string;
+  SMTP2GO_API_KEY: string;
   APPLY_TO: string;
   APPLY_FROM: string;
+}
+
+interface Smtp2goSendResponse {
+  data?: { succeeded?: number; failed?: number; error?: string };
 }
 
 interface TurnstileVerifyResponse {
@@ -58,7 +62,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
 
   // Fail loudly in logs if the project is misconfigured, but stay vague to the client.
-  if (!env.TURNSTILE_SECRET_KEY || !env.RESEND_API_KEY || !env.APPLY_TO || !env.APPLY_FROM) {
+  if (!env.TURNSTILE_SECRET_KEY || !env.SMTP2GO_API_KEY || !env.APPLY_TO || !env.APPLY_FROM) {
     console.error('clinician: missing environment variables');
     return json({ ok: false, error: 'Server not configured.' }, 500);
   }
@@ -129,19 +133,20 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const safeInterest = escapeHtml(interest || 'Not supplied');
 
   try {
-    const sendRes = await fetch('https://api.resend.com/emails', {
+    const sendRes = await fetch('https://api.smtp2go.com/v3/email/send', {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${env.RESEND_API_KEY}`,
         'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
       body: JSON.stringify({
-        from: `Clinical Bench <${env.APPLY_FROM}>`,
+        api_key: env.SMTP2GO_API_KEY,
+        sender: `Clinical Bench <${env.APPLY_FROM}>`,
         to: [env.APPLY_TO],
-        reply_to: email,
+        custom_headers: [{ header: 'Reply-To', value: email }],
         subject: `Clinician application: ${name} (${discipline})`,
-        text: `New clinician application\n\nName: ${name}\nEmail: ${email}\nDiscipline: ${discipline}\nRegistration: ${registration || 'Not supplied'}\nInterest: ${interest || 'Not supplied'}\nCountry: ${country}\nSubmitted: ${submittedAt}\n`,
-        html:
+        text_body: `New clinician application\n\nName: ${name}\nEmail: ${email}\nDiscipline: ${discipline}\nRegistration: ${registration || 'Not supplied'}\nInterest: ${interest || 'Not supplied'}\nCountry: ${country}\nSubmitted: ${submittedAt}\n`,
+        html_body:
           `<h2 style="font-family:system-ui,sans-serif">New clinician application</h2>` +
           `<p style="font-family:system-ui,sans-serif"><strong>Name:</strong> ${safeName}<br>` +
           `<strong>Email:</strong> ${safeEmail}<br>` +
@@ -153,13 +158,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       }),
     });
 
-    if (!sendRes.ok) {
-      const detail = await sendRes.text();
-      console.error('clinician: resend failed', sendRes.status, detail);
+    const result = await sendRes.json<Smtp2goSendResponse>().catch(() => null);
+    if (!sendRes.ok || !result?.data?.succeeded) {
+      console.error('clinician: smtp2go failed', sendRes.status, JSON.stringify(result));
       return json({ ok: false, error: 'Could not send right now. Please email us directly.' }, 502);
     }
   } catch (err) {
-    console.error('clinician: resend request threw', err);
+    console.error('clinician: smtp2go request threw', err);
     return json({ ok: false, error: 'Could not send right now. Please email us directly.' }, 502);
   }
 

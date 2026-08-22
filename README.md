@@ -1,6 +1,6 @@
 # Clinical Bench — deployable site
 
-Static site for Cloudflare Pages, plus one Pages Function for the enquiry form.
+Static site for Cloudflare Pages, plus two Pages Functions for the enquiry and clinician forms.
 No external CDNs: fonts and JS libraries are self-hosted and version-pinned.
 
 ## Structure
@@ -15,7 +15,8 @@ sitemap.xml
 assets/js/                 gsap 3.12.5, ScrollTrigger, lenis 1.1.18 (pinned)
 assets/fonts/              Onest 400/500/600/700, latin subset (woff2)
 assets/img/                responsive webp + jpg at 480/768/1280, plus og.jpg
-functions/api/enquiry.ts   form endpoint: Turnstile verify + Resend send
+functions/api/enquiry.ts   enquiry form endpoint: Turnstile verify + SMTP2GO send
+functions/api/clinician.ts clinician application endpoint: Turnstile verify + SMTP2GO send
 ```
 
 
@@ -59,31 +60,35 @@ in this repo.
 3. Build command: none. Build output directory: the folder containing `index.html`.
 4. Add the custom domain under the project's Custom domains tab.
 
-Cloudflare detects `functions/` automatically and deploys `/api/enquiry`.
+Cloudflare detects `functions/` automatically and deploys `/api/enquiry` and `/api/clinician`.
 
-## Before the form works
+## Before the forms work
 
-Set these in Pages, Settings, Environment variables. Mark the two keys as secrets.
+Set these in Pages, Settings, Environment variables. Mark the API key as a secret.
 
 | Variable | Value |
 | --- | --- |
 | `TURNSTILE_SECRET_KEY` | Cloudflare Turnstile secret key |
-| `RESEND_API_KEY` | Resend key, "Sending access" only |
+| `SMTP2GO_API_KEY` | SMTP2GO API key, sending-only |
 | `ENQUIRY_TO` | inbox that receives enquiries |
 | `ENQUIRY_FROM` | verified sender, for example website@theclinicalbench.com |
+| `APPLY_TO` | inbox that receives clinician applications |
+| `APPLY_FROM` | verified sender, for example website@theclinicalbench.com |
 
-Then replace `TURNSTILE_SITE_KEY` in `index.html` with the real Turnstile site key.
+Then replace `TURNSTILE_SITE_KEY` in `index.html` and `clinicians/index.html` with the real Turnstile site key.
 
-Verify SPF, DKIM and DMARC in Resend before launch, or enquiries will land in spam.
-Test the live form end to end and check the message arrives.
+Verify SPF, DKIM and DMARC for SMTP2GO before launch, or messages will land in spam.
+Inbound mail for the domain stays with Porkbun's forwarding; SMTP2GO is outbound-only.
+Test both live forms end to end and check the messages arrive.
 
 ## Cost guardrails
 
-- Static requests are unmetered on Pages. Only `/api/enquiry` consumes Workers
-  quota (free plan: 100,000 requests per day, shared across Workers and Functions).
+- Static requests are unmetered on Pages. Only `/api/enquiry` and `/api/clinician`
+  consume Workers quota (free plan: 100,000 requests per day, shared across Workers
+  and Functions).
 - Add a Cloudflare rate-limiting rule on `/api/*` (for example 5 requests per
   minute per IP) so a spam flood cannot burn quota or email credits.
-- Set a monthly send cap in Resend.
+- Set a monthly send cap in SMTP2GO.
 - The Turnstile widget plus the honeypot field stop nearly all automated submissions.
 
 ## Domain
@@ -99,15 +104,14 @@ DNS and redirect setup:
 3. Create a Redirect Rule (Rules > Redirect Rules) sending `www` to the bare domain
    with a 301, preserving path and query string. `_redirects` cannot do this because
    it matches on path only.
-4. Add the Resend DNS records (SPF, DKIM, DMARC) before sending any mail.
+4. Add the SMTP2GO DNS records (SPF, DKIM, DMARC) before sending any mail. Porkbun's
+   existing MX records handle inbound mail and are untouched by this.
 
 ## Placeholders to confirm
 - The `~25%` market figure is unverified and currently labelled an industry
   estimate. Substantiate it or remove it before launch.
-- No privacy policy page exists yet. The form collects personal data, so this is
-  required under the Australian Privacy Act.
-- The clinician recruiting page is not built. "For clinicians" links currently
-  point at a mailto.
+- The privacy policy at `/privacy/` is a draft pending legal review. Do not present
+  it as final until it has been signed off.
 
 ## Editing assets later
 

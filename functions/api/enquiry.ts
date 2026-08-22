@@ -2,24 +2,28 @@
  * POST /api/enquiry
  *
  * Handles the Clinical Bench enquiry form.
- * Flow: validate input -> verify Cloudflare Turnstile -> send email via Resend.
+ * Flow: validate input -> verify Cloudflare Turnstile -> send email via SMTP2GO.
  *
  * Required Pages environment variables (Settings > Environment variables):
  *   TURNSTILE_SECRET_KEY  (secret) - from Cloudflare Turnstile
- *   RESEND_API_KEY        (secret) - from Resend, "Sending access" only
+ *   SMTP2GO_API_KEY       (secret) - from SMTP2GO, sending-only API key
  *   ENQUIRY_TO            (plain)  - inbox that receives enquiries
  *   ENQUIRY_FROM          (plain)  - verified sender, e.g. website@theclinicalbench.com
  *
  * Docs:
  *   Turnstile server-side validation: https://developers.cloudflare.com/turnstile/get-started/server-side-validation/
- *   Resend send email API:            https://resend.com/docs/api-reference/emails/send-email
+ *   SMTP2GO send email API:           https://apidoc.smtp2go.com/documentation/#/POST/email/send
  */
 
 interface Env {
   TURNSTILE_SECRET_KEY: string;
-  RESEND_API_KEY: string;
+  SMTP2GO_API_KEY: string;
   ENQUIRY_TO: string;
   ENQUIRY_FROM: string;
+}
+
+interface Smtp2goSendResponse {
+  data?: { succeeded?: number; failed?: number; error?: string };
 }
 
 interface TurnstileVerifyResponse {
@@ -58,7 +62,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
 
   // Fail loudly in logs if the project is misconfigured, but stay vague to the client.
-  if (!env.TURNSTILE_SECRET_KEY || !env.RESEND_API_KEY || !env.ENQUIRY_TO || !env.ENQUIRY_FROM) {
+  if (!env.TURNSTILE_SECRET_KEY || !env.SMTP2GO_API_KEY || !env.ENQUIRY_TO || !env.ENQUIRY_FROM) {
     console.error('enquiry: missing environment variables');
     return json({ ok: false, error: 'Server not configured.' }, 500);
   }
@@ -117,19 +121,20 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const safeNeed = escapeHtml(need || 'Not supplied');
 
   try {
-    const sendRes = await fetch('https://api.resend.com/emails', {
+    const sendRes = await fetch('https://api.smtp2go.com/v3/email/send', {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${env.RESEND_API_KEY}`,
         'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
       body: JSON.stringify({
-        from: `Clinical Bench <${env.ENQUIRY_FROM}>`,
+        api_key: env.SMTP2GO_API_KEY,
+        sender: `Clinical Bench <${env.ENQUIRY_FROM}>`,
         to: [env.ENQUIRY_TO],
-        reply_to: email,
+        custom_headers: [{ header: 'Reply-To', value: email }],
         subject: `Enquiry from ${email}`,
-        text: `New enquiry\n\nEmail: ${email}\nNeed: ${need || 'Not supplied'}\nCountry: ${country}\nSubmitted: ${submittedAt}\n`,
-        html:
+        text_body: `New enquiry\n\nEmail: ${email}\nNeed: ${need || 'Not supplied'}\nCountry: ${country}\nSubmitted: ${submittedAt}\n`,
+        html_body:
           `<h2 style="font-family:system-ui,sans-serif">New enquiry</h2>` +
           `<p style="font-family:system-ui,sans-serif"><strong>Email:</strong> ${safeEmail}<br>` +
           `<strong>Need:</strong> ${safeNeed}<br>` +
@@ -138,13 +143,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       }),
     });
 
-    if (!sendRes.ok) {
-      const detail = await sendRes.text();
-      console.error('enquiry: resend failed', sendRes.status, detail);
+    const result = await sendRes.json<Smtp2goSendResponse>().catch(() => null);
+    if (!sendRes.ok || !result?.data?.succeeded) {
+      console.error('enquiry: smtp2go failed', sendRes.status, JSON.stringify(result));
       return json({ ok: false, error: 'Could not send right now. Please email us directly.' }, 502);
     }
   } catch (err) {
-    console.error('enquiry: resend request threw', err);
+    console.error('enquiry: smtp2go request threw', err);
     return json({ ok: false, error: 'Could not send right now. Please email us directly.' }, 502);
   }
 
