@@ -283,8 +283,11 @@
   /* CTA */
   .cta-sec{padding:clamp(48px,7vw,90px) var(--mx) clamp(60px,8vw,100px)}
   .cta{max-width:var(--maxw);margin:0 auto;background:var(--dark);color:#fff;border-radius:var(--r-xl);padding:clamp(44px,6vw,80px);text-align:center;position:relative;overflow:hidden}
-  .cta::before{content:"";position:absolute;left:50%;top:-40%;width:700px;height:500px;transform:translateX(-50%);background:radial-gradient(50% 50% at 50% 50%,rgba(103,224,166,.16),transparent 70%);pointer-events:none}
+  .cta::before{content:"";position:absolute;left:50%;top:-40%;width:700px;height:500px;transform:translateX(-50%);background:radial-gradient(50% 50% at 50% 50%,rgba(103,224,166,.16),transparent 70%);animation:glowP 4.5s ease-in-out infinite;pointer-events:none}
+  .cta .svc-wm{right:-24px;bottom:-34px;width:200px;height:200px;color:var(--accent-2);opacity:.11}
   .cta .in{position:relative;z-index:1}
+  .cta-ic{width:52px;height:52px;border-radius:15px;background:rgba(103,224,166,.14);color:var(--accent-2);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;position:relative;z-index:1}
+  .cta-ic svg{width:26px;height:26px}
   .cta h2{font-size:clamp(34px,5vw,68px);font-weight:700;letter-spacing:-.04em;max-width:14ch;margin:0 auto;color:#fff}
   .cta h2 .accent{color:var(--accent-2)}
   .cta p{color:rgba(255,255,255,.66);font-size:18px;margin:22px auto 0;max-width:44ch}
@@ -527,7 +530,9 @@
   <!-- CTA -->
   <section class="cta-sec" id="contact">
     <div class="cta up">
+      <svg class="svc-wm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
       <div class="in">
+        <div class="cta-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></div>
         <span class="label" style="color:rgba(255,255,255,.6)">Enquire</span>
         <h2 class="type" style="margin-top:16px">Tell us what you’re <span class="accent">building.</span></h2>
         <p>A short brief is enough. We’ll come back with who fits and how we’d run it.</p>

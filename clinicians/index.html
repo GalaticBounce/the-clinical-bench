@@ -109,7 +109,11 @@ h1{font-size:clamp(38px,6vw,74px);font-weight:700;letter-spacing:-.04em;margin:2
 
 .apply-sec{padding:clamp(48px,7vw,90px) var(--mx) clamp(60px,8vw,100px)}
 .apply{max-width:var(--maxw);margin:0 auto;background:var(--dark);color:#fff;border-radius:var(--r-xl);padding:clamp(44px,6vw,76px);position:relative;overflow:hidden}
-.apply::before{content:"";position:absolute;left:50%;top:-40%;width:700px;height:500px;transform:translateX(-50%);background:radial-gradient(50% 50% at 50% 50%,rgba(103,224,166,.16),transparent 70%);pointer-events:none}
+.apply::before{content:"";position:absolute;left:50%;top:-40%;width:700px;height:500px;transform:translateX(-50%);background:radial-gradient(50% 50% at 50% 50%,rgba(103,224,166,.16),transparent 70%);animation:glowP 4.5s ease-in-out infinite;pointer-events:none}
+@keyframes glowP{0%,100%{opacity:.5}50%{opacity:1}}
+.apply-wm{position:absolute;right:-24px;bottom:-34px;width:200px;height:200px;color:var(--accent-2);opacity:.11;pointer-events:none}
+.apply-ic{width:52px;height:52px;border-radius:15px;background:rgba(103,224,166,.14);color:var(--accent-2);display:flex;align-items:center;justify-content:center;margin-bottom:22px;position:relative;z-index:1}
+.apply-ic svg{width:26px;height:26px}
 .apply .in{position:relative;max-width:760px}
 .apply h2{font-size:clamp(30px,4.4vw,54px);font-weight:700;letter-spacing:-.035em;color:#fff;max-width:16ch}
 .apply p.lead{color:rgba(255,255,255,.66);font-size:17px;margin-top:18px;max-width:52ch}
@@ -282,7 +286,9 @@ html.anim .up{opacity:0;transform:translateY(24px)}
 
   <section class="apply-sec" id="apply">
     <div class="apply up">
+      <svg class="apply-wm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
       <div class="in">
+        <div class="apply-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></div>
         <span class="label" style="color:rgba(255,255,255,.6)">Apply</span>
         <h2 style="margin-top:14px">Join the bench.</h2>
         <p class="lead">A few details is enough to start. We will come back with what fits and what it pays.</p>
