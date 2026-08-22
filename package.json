@@ -1,8 +1,0 @@
-{
-  "name": "the-clinical-bench",
-  "private": true,
-  "description": "Static site. No build step for the site itself — this package.json exists only so Cloudflare Pages installs dependencies for the /functions API (phone number validation).",
-  "dependencies": {
-    "libphonenumber-js": "^1.13.11"
-  }
-}

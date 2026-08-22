@@ -15,7 +15,7 @@
  *   SMTP2GO send email API:           https://apidoc.smtp2go.com/documentation/#/POST/email/send
  */
 
-import { parsePhoneNumberFromString, type CountryCode } from 'libphonenumber-js/min';
+import { parsePhoneNumberFromString } from '../_lib/libphonenumber-min.js';
 
 interface Env {
   TURNSTILE_SECRET_KEY: string;
@@ -62,10 +62,11 @@ function isEmail(value: string): boolean {
 function normalizePhone(value: string, countryIso: string): string | null {
   const trimmed = value.trim();
   if (!trimmed) return null;
+  if (!trimmed.startsWith('+') && !countryIso) return null;
   try {
-    const iso = trimmed.charAt(0) === '+' ? undefined : (countryIso as CountryCode);
-    if (!trimmed.startsWith('+') && !countryIso) return null;
-    const parsed = parsePhoneNumberFromString(trimmed, iso);
+    const parsed = trimmed.startsWith('+')
+      ? parsePhoneNumberFromString(trimmed)
+      : parsePhoneNumberFromString(trimmed, countryIso);
     return parsed && parsed.isValid() ? parsed.number : null;
   } catch {
     return null;
