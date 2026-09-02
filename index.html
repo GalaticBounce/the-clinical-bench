@@ -78,6 +78,10 @@
   .lockup{display:inline-flex;align-items:center;gap:9px;padding:8px 16px 8px 10px;border:1px solid var(--line);background:#fff;border-radius:var(--r-pill);font-size:13.5px;font-weight:600;color:var(--muted)}
   .lockup .mk{width:18px;height:18px}
   h1.hh{font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.035em;margin:28px auto 0;max-width:none;line-height:1.06}
+  /* Reserve room for the longest rotating phrase so typing/deleting never shifts the content below. */
+  h1.hh{min-height:5.3em}
+  @media(min-width:401px){h1.hh{min-height:4.3em}}
+  @media(min-width:640px){h1.hh{min-height:2.2em}}
   .hh .tw-b{display:block}
   .hh .tw-line{display:block;min-height:1.1em}
   .hh .sub-accent{color:var(--accent)}
