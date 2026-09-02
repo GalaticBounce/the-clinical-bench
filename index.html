@@ -70,14 +70,12 @@
   @media(max-width:860px){.nav-c{display:none}}
 
   /* HERO */
-  .hero{text-align:center;padding:clamp(70px,11vw,140px) 0 clamp(50px,7vw,90px);position:relative;overflow:hidden}
+  .hero{text-align:center;padding:clamp(40px,6vw,76px) 0 clamp(50px,7vw,90px);position:relative;overflow:hidden}
   #hpart{position:absolute;inset:0;z-index:0;width:100%;height:100%}
   .hero::before{content:"";position:absolute;left:50%;top:-8%;width:min(880px,90vw);height:540px;transform:translateX(-50%);z-index:0;
     background:radial-gradient(60% 60% at 50% 42%,rgba(30,122,90,.10),transparent 70%);pointer-events:none}
   .hero .wrap{position:relative;z-index:2}
-  .lockup{display:inline-flex;align-items:center;gap:9px;padding:8px 16px 8px 10px;border:1px solid var(--line);background:#fff;border-radius:var(--r-pill);font-size:13.5px;font-weight:600;color:var(--muted)}
-  .lockup .mk{width:18px;height:18px}
-  h1.hh{font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.035em;margin:28px auto 0;max-width:none;line-height:1.06}
+  h1.hh{font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.035em;margin:0 auto;max-width:none;line-height:1.06}
   /* Reserve room for the longest rotating phrase so typing/deleting never shifts the content below. */
   h1.hh{min-height:5.3em}
   @media(min-width:401px){h1.hh{min-height:4.3em}}
@@ -397,7 +395,6 @@
   <section class="hero">
     <canvas id="hpart" aria-hidden="true"></canvas>
     <div class="wrap">
-      <span class="lockup up"><svg class="mk" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g fill="none" stroke="#1E7A5A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 4.4H6.6a2 2 0 0 0-2 2v11.2a2 2 0 0 0 2 2h1.6"/><path d="M15.8 4.4h1.6a2 2 0 0 1 2 2v11.2a2 2 0 0 1-2 2h-1.6"/></g><circle cx="12" cy="9.9" r="3" fill="#2E9D74"/><path d="M7.3 18.2a4.7 4.7 0 0 1 9.4 0Z" fill="#2E9D74"/></svg> For teams building in healthcare</span>
       <h1 class="hh">Credentialled clinicians, on demand for <span class="accent">product validation</span>.</h1>
       <p class="sub up">Bring a doctor, nurse or allied-health expert onto your product, your process or your advisory board. Matched in days, delivered, not just discussed. Australian and verified.</p>
       <div class="hero-cta up">
