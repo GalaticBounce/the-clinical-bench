@@ -186,10 +186,17 @@
     .proc-m-item{display:flex;align-items:flex-start;gap:14px;position:relative}
     .proc-m-item:not(:last-child)::after{content:"";position:absolute;left:21px;top:46px;width:2px;height:calc(100% + 24px - 46px);background:rgba(255,255,255,.16)}
     .proc-m-ic{width:44px;height:44px;border-radius:13px;background:rgba(103,224,166,.14);color:var(--accent-2);display:flex;align-items:center;justify-content:center;flex:0 0 auto;position:relative;z-index:1}
-    .proc-m-ic svg{width:20px;height:20px}
+    .proc-m-ic svg{width:20px;height:20px;position:relative;z-index:1}
+    .proc-m-ic::after{content:"";position:absolute;inset:0;border-radius:13px;border:2px solid var(--accent-2);opacity:0;animation:procMPulse 5s ease-in-out infinite}
+    .proc-m-item:nth-child(1) .proc-m-ic::after{animation-delay:0s}
+    .proc-m-item:nth-child(2) .proc-m-ic::after{animation-delay:1.25s}
+    .proc-m-item:nth-child(3) .proc-m-ic::after{animation-delay:2.5s}
+    .proc-m-item:nth-child(4) .proc-m-ic::after{animation-delay:3.75s}
+    @keyframes procMPulse{0%{transform:scale(1);opacity:.65}70%,100%{transform:scale(1.4);opacity:0}}
     .proc-m-lab{color:#fff;font-weight:600;font-size:15.5px;padding-top:11px}
     .proc-m-cap{color:rgba(255,255,255,.55);font-size:13px;margin-top:3px}
   }
+  @media(max-width:640px) and (prefers-reduced-motion:reduce){.proc-m-ic::after{animation:none!important;display:none}}
 
   /* DNA HELIX (JS-driven twist; icons anchored to strands) */
   .helix{position:relative;height:240px;width:100%;margin-bottom:8px;overflow:hidden}
