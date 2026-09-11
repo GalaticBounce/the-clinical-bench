@@ -46,6 +46,10 @@ const PREVIEW = process.argv.includes('--preview');
 const PREVIEW_DIR = path.join(ROOT, 'content', 'drafts', 'preview');
 
 const REQUIRED = ['title', 'description', 'slug', 'date', 'status', 'audience', 'keywords', 'cluster'];
+// Shown under every post's CTA. Clinical Bench supplies professional input for commercial
+// work; its articles describe practice and regulation in general terms only.
+const DISCLAIMER = 'This article is general information for teams and clinicians. It is not legal, regulatory, clinical or financial advice. It does not describe your situation. Clinical Bench supplies private professional input for commercial work. It is not a clinical service, does not run clinical trials and its clinicians do not endorse products.';
+
 const AUDIENCES = {
   companies: {
     label: 'For teams building healthcare products',
@@ -524,6 +528,7 @@ article summary{cursor:pointer;font-weight:600}
 .cta{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 30px;margin:56px 0 0}
 .cta h2{font-size:24px;font-weight:600;letter-spacing:-.02em;line-height:1.2;margin:0 0 8px}
 .cta p{color:var(--body);font-size:16.5px;margin-bottom:18px}
+.cta .disclaimer{font-size:13px;color:var(--muted);margin:18px 0 0;line-height:1.5}
 .more{margin-top:48px;padding-top:32px;border-top:1px solid var(--line)}
 .more h2{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
 .more a{display:block;font-weight:600;color:var(--ink);text-decoration:none;font-size:17px;line-height:1.35}
@@ -715,6 +720,7 @@ ${post.html}
   <h2>${a.box.heading}</h2>
   <p>${a.box.body}</p>
   <a class="pill" href="${a.box.href}">${a.box.cta} <span class="arw" aria-hidden="true">&rarr;</span></a>
+  <p class="disclaimer">${DISCLAIMER}</p>
 </aside>
 ${moreHtml}
   </div>

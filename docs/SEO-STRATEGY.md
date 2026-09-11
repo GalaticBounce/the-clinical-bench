@@ -101,6 +101,9 @@ deserve a page.
 - It never invents a news peg, a statistic, a clinician or a client.
 - It never touches `index.html` or `clinicians/index.html`; it reports faults there.
 - It never posts to social media. There is no LinkedIn integration yet.
+- It never gives legal, regulatory or clinical advice. Every post carries a
+  general-information disclaimer and a gate rejects absolute legal statements. The
+  liability position behind this is in `LIABILITY-REVIEW.md`.
 - It cannot read analytics until Search Console and Web Analytics exist. Until then every
   report says so rather than guessing.
 

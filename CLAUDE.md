@@ -50,7 +50,17 @@ It never approves its own drafts. Approve with `calendar.py approve <slug>`.
 - `assets/*` is cached immutably. Rename or `?v=` when changing an asset.
 - `_Inbox/` is Jamie's drop folder, git-ignored, not part of the site.
 
+## Liability posture (11 Sep 2026)
+
+Jamie's instruction: maximise protection. `docs/LIABILITY-REVIEW.md` ranks the exposures
+(labour hire licensing, superannuation on contractor fees, uninsured advice, endorsement
+law, missing contracts, privacy) and `docs/CONTRACT-TERM-SHEETS.md` is the brief for a
+lawyer. Site and content rules that follow: never legal or regulatory advice, every post
+carries the disclaimer, no endorsement language anywhere, no "supply a worker" framing.
+
 ## Open items (11 Sep 2026)
+- No client terms, clinician agreement, website terms, PI or PL insurance, or entity name
+  and ABN on the site. All in the protection checklist in `docs/LIABILITY-REVIEW.md`.
 
 - No analytics: Cloudflare Web Analytics, Google Search Console and Bing Webmaster are not set up.
 - Footer on the home page has two `href="#"` links (Australia, Terms). No terms page exists.

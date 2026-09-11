@@ -11,7 +11,7 @@ cluster: product-testing
 slot: W01
 ---
 
-Clinician testing means a registered doctor, nurse or allied health professional uses your health app the way they would in practice, then tells you in writing what works, what is unsafe and what you have missed. You do not need a hospital partnership or a research ethics application to get it. You need the right person, a short written brief and a fixed scope.
+Clinician testing means a registered doctor, nurse or allied health professional uses your health app the way they would in practice, then tells you in writing what works, what is unsafe and what you have missed. In most cases it takes no hospital partnership and no research ethics process. It takes the right person, a short written brief and a fixed scope.
 
 Most teams building a health product know they should do this. Fewer manage it before launch, because the usual routes are slow. A friend of a friend who is a GP gives you twenty minutes over coffee. A LinkedIn post asks for volunteers and attracts the wrong ones. A hospital innovation unit says yes, then schedules you for next quarter. This is a guide to doing it properly, in days, without any of that.
 
@@ -82,7 +82,7 @@ One thing the report is not: an endorsement. A clinician who tests your product 
 
 ### Do I need ethics approval to have a clinician test my app?
 
-No. A clinician using your product and giving you professional feedback is commercial consulting work, not research on human participants. Ethics approval becomes relevant when you study patients or collect data from them for research. If your testing involves real patients or real patient data, get advice before you start.
+Usually not. A clinician using your product and giving you professional feedback is commercial consulting work rather than research on human participants, so ethics approval is not normally in play. It becomes relevant when you study patients or collect data from them for research. If your testing involves real patients or real patient data, get advice from your institution or a lawyer before you start.
 
 ### How many clinicians should test it?
 
@@ -90,7 +90,7 @@ One good one, for a first pass. The aim is to find the categories of problem, no
 
 ### Can I use the findings in a TGA submission?
 
-Not directly. Clinical evidence for a regulated medical device has its own requirements, set out in the TGA's guidance. A clinician test tells you whether you are likely to need that evidence. It shows where the product would fail on safety before you get there. Treat it as the step before the regulatory work, not a substitute for it.
+Not directly. Clinical evidence for a regulated medical device has its own requirements, set out in the TGA's guidance. Whether your product is regulated at all is a question for the TGA's own decision tools or a regulatory adviser. A clinician test tells you whether you are likely to need that evidence. It shows where the product would fail on safety before you get there. Treat it as the step before the regulatory work, not a substitute for it.
 
 ### What if the clinician says the product should not exist?
 
