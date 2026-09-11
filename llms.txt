@@ -48,5 +48,8 @@ supply is the binding constraint on that growth.
 - For clinicians (recruitment): https://theclinicalbench.com/clinicians/
 - Privacy policy: https://theclinicalbench.com/privacy/
 
+## Insights
+- No articles published yet. Index: https://theclinicalbench.com/insights/
+
 ## Contact
 hello@theclinicalbench.com

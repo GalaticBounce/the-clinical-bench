@@ -17,3 +17,9 @@ Thumbs.db
 *.swp
 .idea/
 .vscode/
+
+# Jamie's drop folder, not part of the site
+_Inbox/
+
+# Draft previews built by build.js --preview
+content/drafts/preview/

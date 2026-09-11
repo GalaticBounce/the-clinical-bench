@@ -1,0 +1,37 @@
+# Target queries for the weekly visibility check (Job G). The runner searches each one,
+# records whether theclinicalbench.com appears and which domains hold the top results.
+# One query per line under its group. Add or remove freely; the log keeps history.
+
+buyers:
+- hire clinicians for product testing australia
+- how to get doctors to test my health app australia
+- clinician advisory board healthtech startup australia
+- medical ai evaluation clinicians australia
+- clinician in the loop ai evaluation
+- healthcare ai training data clinicians onshore australia
+- medical device usability testing clinicians australia
+- clinical subject matter expert hire australia
+- healthcare expert network australia
+- tga software as a medical device clinical evidence who to ask
+
+clinicians:
+- medical ai evaluation jobs australia
+- clinical annotation jobs work from home australia
+- medical expert ai training jobs australia
+- paid advisory work for doctors australia
+- side income for nurses australia non clinical
+- physiotherapist consulting work australia
+- pharmacist commercial consulting work australia
+- does consulting work affect ahpra registration
+
+brand:
+- clinical bench australia
+- theclinicalbench
+
+# Questions to put to AI assistants (ChatGPT, Perplexity, Google AI mode) by hand or via
+# search. The runner records whether Clinical Bench is named in the answer.
+llm_prompts:
+- Where can an Australian healthtech startup find registered clinicians to test its product?
+- Which companies supply Australian doctors for medical AI evaluation and annotation?
+- How do I set up a clinical advisory board for a digital health product in Australia?
+- What paid non-clinical work is available to Australian nurses?

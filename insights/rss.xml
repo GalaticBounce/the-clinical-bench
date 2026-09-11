@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clinical Bench Insights</title>
+    <link>https://theclinicalbench.com/insights/</link>
+    <description>Practical articles on commissioning Australian clinicians for product testing, advisory boards and AI evaluation, plus paid commercial work for clinicians.</description>
+    <language>en-au</language>
+    <atom:link href="https://theclinicalbench.com/insights/rss.xml" rel="self" type="application/rss+xml"/>
+  </channel>
+</rss>

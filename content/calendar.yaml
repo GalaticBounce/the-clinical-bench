@@ -1,0 +1,221 @@
+# Clinical Bench content calendar. One slot per line group. The runner reads this file;
+# Jamie edits it. Statuses: backlog | planning | drafted | published | skipped.
+# Keys: slot, publish_on (earliest publish date), audience (companies|clinicians),
+# cluster, type (evergreen|news), working_title, intent (the query it answers), status, slug, note.
+
+- slot: W01
+  publish_on: 2026-09-22
+  audience: companies
+  cluster: product-testing
+  type: evergreen
+  working_title: How to get clinicians to test your health app before launch
+  intent: how to get doctors to test my medical app australia; clinician feedback health app
+  status: drafted
+  slug: how-to-get-clinicians-to-test-your-health-app-before-launch
+
+- slot: W02
+  publish_on: 2026-09-24
+  audience: clinicians
+  cluster: ai-evaluation-work
+  type: evergreen
+  working_title: Paid medical AI evaluation work for Australian clinicians: what it involves
+  intent: medical ai evaluation jobs; medical expert ai training jobs australia
+  status: backlog
+
+- slot: W03
+  publish_on: 2026-09-29
+  audience: companies
+  cluster: medical-ai-evaluation
+  type: evergreen
+  working_title: What clinician-in-the-loop evaluation of a medical AI actually involves
+  intent: clinician in the loop ai; medical ai evaluation; rlhf medical
+  status: backlog
+
+- slot: W04
+  publish_on: 2026-10-01
+  audience: clinicians
+  cluster: side-income
+  type: evergreen
+  working_title: Does commercial consulting work affect your AHPRA registration or indemnity?
+  intent: ahpra registered nurse outside work; doctor consulting work indemnity australia
+  status: backlog
+
+- slot: W05
+  publish_on: 2026-10-06
+  audience: companies
+  cluster: advisory-boards
+  type: evergreen
+  working_title: How to set up a clinical advisory board for a healthtech startup
+  intent: clinical advisory board; how to build a clinical advisory board startup
+  status: backlog
+
+- slot: W06
+  publish_on: 2026-10-08
+  audience: clinicians
+  cluster: annotation-work
+  type: evergreen
+  working_title: Clinical annotation jobs: what the work is and what it pays
+  intent: clinical annotation jobs work from home; clinical data annotation jobs remote
+  status: backlog
+
+- slot: W07
+  publish_on: 2026-10-13
+  audience: companies
+  cluster: regulatory
+  type: evergreen
+  working_title: TGA software as a medical device: when your app is regulated and who to ask
+  intent: tga software as a medical device; samd australia clinical evidence
+  status: backlog
+
+- slot: W08
+  publish_on: 2026-10-15
+  audience: clinicians
+  cluster: ai-evaluation-work
+  type: evergreen
+  working_title: Mercor, Outlier or a local bench: AI evaluation platforms compared for Australian clinicians
+  intent: mercor medical experts australia; outlier medical expert pay; medical ai trainer jobs
+  status: backlog
+
+- slot: W09
+  publish_on: 2026-10-20
+  audience: companies
+  cluster: product-testing
+  type: evergreen
+  working_title: Usability testing a medical device with real clinicians: what IEC 62366 expects
+  intent: medical device usability testing services; usability testing medical device
+  status: backlog
+
+- slot: W10
+  publish_on: 2026-10-22
+  audience: clinicians
+  cluster: side-income
+  type: evergreen
+  working_title: Non-clinical side income for nurses in Australia that uses your registration
+  intent: side income for nurses australia; non clinical jobs for nurses australia
+  status: backlog
+
+- slot: W11
+  publish_on: 2026-10-27
+  audience: companies
+  cluster: medical-ai-evaluation
+  type: evergreen
+  working_title: Why onshore clinicians matter for medical AI evaluation under the Privacy Act
+  intent: healthcare ai training data australia; onshore data annotation australia privacy
+  status: backlog
+
+- slot: W12
+  publish_on: 2026-10-29
+  audience: clinicians
+  cluster: advisory-work
+  type: evergreen
+  working_title: How much does clinical advisory work pay in Australia?
+  intent: clinical advisor pay australia; how much do physician advisors get paid
+  status: backlog
+
+- slot: W13
+  publish_on: 2026-11-03
+  audience: companies
+  cluster: buying-guide
+  type: evergreen
+  working_title: Survey panel, expert network or clinician marketplace: which one to use
+  intent: healthcare expert network vs survey panel; hire clinical subject matter expert
+  status: backlog
+
+- slot: W14
+  publish_on: 2026-11-05
+  audience: clinicians
+  cluster: product-testing-work
+  type: evergreen
+  working_title: Product testing work for physiotherapists and occupational therapists
+  intent: physiotherapist consulting work; occupational therapist product consultant
+  status: backlog
+
+- slot: W15
+  publish_on: 2026-11-10
+  audience: companies
+  cluster: briefing
+  type: evergreen
+  working_title: How to write a brief for a clinician engagement
+  intent: how to brief a clinical consultant; clinical subject matter expert brief
+  status: backlog
+
+- slot: W16
+  publish_on: 2026-11-12
+  audience: clinicians
+  cluster: side-income
+  type: evergreen
+  working_title: Paid work for doctors outside clinical practice in Australia
+  intent: doctor side hustle australia; non clinical work for doctors australia
+  status: backlog
+
+- slot: W17
+  publish_on: 2026-11-17
+  audience: companies
+  cluster: aged-care
+  type: news
+  working_title: Getting clinician input on aged care products under the new Aged Care Act
+  intent: aged care act 2024 providers technology; aged care consultant
+  status: backlog
+
+- slot: W18
+  publish_on: 2026-11-19
+  audience: clinicians
+  cluster: annotation-work
+  type: evergreen
+  working_title: What a clinician actually scores when evaluating a medical LLM
+  intent: medical llm evaluation rubric; rlhf medical trainer
+  status: backlog
+
+- slot: W19
+  publish_on: 2026-11-24
+  audience: companies
+  cluster: medical-writing
+  type: evergreen
+  working_title: Clinician-reviewed health claims: what a defensible claim looks like
+  intent: health claims review australia; medical writing services australia
+  status: backlog
+
+- slot: W20
+  publish_on: 2026-11-26
+  audience: clinicians
+  cluster: pharmacists
+  type: evergreen
+  working_title: Commercial work for pharmacists: advisory, AI evaluation and product review
+  intent: pharmacist consulting work australia; non clinical pharmacist jobs
+  status: backlog
+
+- slot: W21
+  publish_on: 2026-12-01
+  audience: companies
+  cluster: due-diligence
+  type: evergreen
+  working_title: Clinical due diligence for health investors: what a clinician checks
+  intent: clinical due diligence checklist; medical due diligence
+  status: backlog
+
+- slot: W22
+  publish_on: 2026-12-03
+  audience: clinicians
+  cluster: getting-started
+  type: evergreen
+  working_title: Your first commercial engagement: what to expect from brief to invoice
+  intent: clinical consultant first engagement; how to become a clinical advisor
+  status: backlog
+
+- slot: W23
+  publish_on: 2026-12-08
+  audience: companies
+  cluster: process-mapping
+  type: evergreen
+  working_title: Mapping a care workflow with the people who run it
+  intent: clinical workflow mapping; care pathway mapping healthtech
+  status: backlog
+
+- slot: W24
+  publish_on: 2026-12-10
+  audience: clinicians
+  cluster: psychologists
+  type: evergreen
+  working_title: Commercial work for psychologists: digital mental health products need you
+  intent: psychologist consulting digital health; non clinical psychologist jobs australia
+  status: backlog
