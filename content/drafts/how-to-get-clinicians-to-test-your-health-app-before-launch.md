@@ -60,9 +60,9 @@ Do not give them your roadmap, your pitch deck or the reasons the design is the 
 
 A first clinician test of a working app is usually a scoped engagement of a few hours: the time to read the brief, use the product properly and write the findings up. Where a team needs more, it is because the product has several user types or because the first test found enough to justify a second pass after changes.
 
-Cost depends on the seniority required and the hours scoped. The important thing is the pricing model, not the number. An hourly arrangement with no cap tends to produce a short engagement and a thin report, because the clinician is watching the clock on your behalf. A fixed fee agreed against a written scope produces the report you actually asked for. Ask for a fixed price before work starts and decline anything open-ended.
+Cost depends on the seniority required and the hours scoped. The important thing is the pricing model, not the number. An hourly arrangement with no cap tends to produce a short engagement and a thin report, because the clinician is watching the clock on your behalf. A fixed fee agreed against a written scope produces the report you actually asked for. Ask for a fixed price before work starts and decline anything open-ended, whoever you engage through.
 
-On timing, the constraint is finding the person, not the work itself. If you already have someone suitable, the whole thing can run inside a week. If you do not, a marketplace that already holds verified, screened clinicians can match one in days. Clinical Bench does this for [companies building healthcare products](/), with the registration check done before the match and a fixed fee per engagement.
+On timing, the constraint is finding the person, not the work itself. If you already have someone suitable, the whole thing can run inside a week. If you do not, a marketplace that already holds verified, screened clinicians can match one in days. Clinical Bench does this for [companies building healthcare products](/), with the registration check done before the introduction and the scope and fee agreed in writing before any work starts.
 
 ## What you get back and what to do with it
 

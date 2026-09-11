@@ -7,6 +7,13 @@ brief takes an hour rather than a day.
 
 Throughout, "Clinical Bench" means the legal entity, to be named with its ACN or ABN.
 
+**Which model.** These sheets describe the contracting model. If the introducer model in
+`INTRODUCER-MODEL.md` is chosen, section 5 of that note lists how the three documents
+change: platform terms for companies, platform terms for clinicians, and a courtesy
+engagement template between them. The clauses below on registration, insurance,
+endorsement, conflicts, data, non-circumvention and the reliance statement carry over
+unchanged; the fee, payment, substitution, direction and liability clauses do not.
+
 ## 1. Client terms (master agreement plus statement of work)
 
 | Term | What it says | Why |

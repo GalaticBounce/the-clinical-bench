@@ -5,7 +5,13 @@ introduces registered practitioners to companies at scale. This is desk research
 non-lawyer, with sources linked, organised so a lawyer can confirm or correct each line
 quickly. It is not legal advice. Not served publicly.
 
-The model under review: Clinical Bench contracts with a company, scopes a fixed-fee
+**Model change, same day.** After this review Jamie directed that Clinical Bench may
+operate as a pure introducer, with clinicians contracting directly with the company and
+Clinical Bench charging for the search and the connection. `INTRODUCER-MODEL.md` re-runs
+the six exposures under that model, sets out fee options and recommends one. Read it
+first. This document stands as the analysis of the model the site currently describes.
+
+The model reviewed here: Clinical Bench contracts with a company, scopes a fixed-fee
 engagement, selects a registration-checked clinician, the clinician does the work
 (mostly remote), Clinical Bench handles contracting and invoicing and pays the clinician.
 The site says exactly this on `/clinicians/` ("We handle the contracting and invoicing").

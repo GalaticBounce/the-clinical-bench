@@ -58,6 +58,13 @@ law, missing contracts, privacy) and `docs/CONTRACT-TERM-SHEETS.md` is the brief
 lawyer. Site and content rules that follow: never legal or regulatory advice, every post
 carries the disclaimer, no endorsement language anywhere, no "supply a worker" framing.
 
+**Commercial model under review (11 Sep 2026).** Jamie is exploring a pure introducer
+model: clinicians contract directly with companies, Clinical Bench charges the company
+for the search and connection, never pays or manages the clinician. `docs/INTRODUCER-MODEL.md`
+has the analysis and fee options. Until decided, site copy still describes the
+contracting model ("we handle the contracting and invoicing") and posts must stay neutral
+on who contracts with whom and who pays whom.
+
 ## Open items (11 Sep 2026)
 - No client terms, clinician agreement, website terms, PI or PL insurance, or entity name
   and ABN on the site. All in the protection checklist in `docs/LIABILITY-REVIEW.md`.
