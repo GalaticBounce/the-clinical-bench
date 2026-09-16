@@ -60,7 +60,7 @@ Do not give them your roadmap, your pitch deck or the reasons the design is the 
 
 A first clinician test of a working app is usually a scoped engagement of a few hours: the time to read the brief, use the product properly and write the findings up. Where a team needs more, it is because the product has several user types or because the first test found enough to justify a second pass after changes.
 
-Cost depends on the seniority required and the hours scoped. The important thing is the pricing model, not the number. An hourly arrangement with no cap tends to produce a short engagement and a thin report, because the clinician is watching the clock on your behalf. A fixed fee agreed against a written scope produces the report you actually asked for. Ask for a fixed price before work starts and decline anything open-ended, whoever you engage through.
+Cost depends on the seniority required and the hours scoped. The important thing is that the scope and the fee are settled in writing before anyone starts, not the number itself. An open-ended hourly arrangement tends to produce a short engagement and a thin report, because the clinician is watching the clock on your behalf. A scope that names the deliverable, with a fee agreed against it, produces the report you actually asked for. Settle both in writing before work starts, whoever you engage through.
 
 On timing, the constraint is finding the person, not the work itself. If you already have someone suitable, the whole thing can run inside a week. If you do not, a marketplace that already holds verified, screened clinicians can match one in days. Clinical Bench does this for [companies building healthcare products](/), with the registration check done before the introduction and the scope and fee agreed in writing before any work starts.
 
@@ -98,4 +98,4 @@ That happens. It is the most valuable outcome a test can produce before launch r
 
 ## What would a clinician find in your first ten minutes?
 
-Every health product team can guess at the answer. The screen you have argued about, the value nobody is sure is right, the step you know is in the wrong order. A clinician will find those in the first ten minutes and then keep going. If you would rather know now than after launch, send a short brief through the [enquiry form](/#contact) and you will get back a named professional, a scope and a fixed price within days.
+Every health product team can guess at the answer. The screen you have argued about, the value nobody is sure is right, the step you know is in the wrong order. A clinician will find those in the first ten minutes and then keep going. If you would rather know now than after launch, send a short brief through the [enquiry form](/#contact). You will get back a named, register-checked professional with the scope and the fee agreed in writing, in days.
