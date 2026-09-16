@@ -1,0 +1,18 @@
+SOURCE: http://export.arxiv.org/abs/2505.08775
+SOURCE: https://www.medicalboard.gov.au/Codes-Guidelines-Policies/FAQ/FAQ-Recency-of-practice.aspx
+SOURCE: https://www.mercor.com/experts/healthcare/
+ALLOW: 2026, 2025
+---DATA---
+HealthBench is built from 5,000 multi-turn conversations between a model and a user or healthcare professional.
+Its conversation-specific rubrics were created by 262 physicians.
+The benchmark contains 48,562 unique rubric criteria spanning health contexts and behavioural dimensions.
+HealthBench Consensus covers 34 dimensions of model behaviour validated by physician consensus.
+The Medical Board of Australia's recency of practice standard can be met with four weeks full-time equivalent in one registration period, a total of 152 hours.
+The same standard can be met with 12 weeks full-time equivalent over three consecutive registration periods, a total of 456 hours.
+The Board counts a maximum of 38 hours per week as full-time equivalent.
+Mercor states compensation of 50 to 180 US dollars per hour based on expertise and project complexity.
+---ARGUMENT---
+The work is judgement rather than data entry, which is why the briefs ask for currently practising people.
+An Australian clinician reading a platform's advertised rate is reading a number set in another currency and another market.
+The thing worth checking before you accept a brief is not the rate but the terms around it.
+Confidentiality and the ownership of what you write are settled before work starts or they are settled badly.

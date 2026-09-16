@@ -20,7 +20,8 @@
   type: evergreen
   working_title: Paid medical AI evaluation work for Australian clinicians: what it involves
   intent: medical ai evaluation jobs; medical expert ai training jobs australia
-  status: backlog
+  status: drafted
+  slug: medical-ai-evaluation-jobs-for-australian-clinicians
 
 - slot: W03
   publish_on: 2026-09-29
